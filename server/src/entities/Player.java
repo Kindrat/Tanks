@@ -4,6 +4,9 @@ import org.jboss.netty.buffer.ChannelBuffer;
 import org.jboss.netty.buffer.ChannelBuffers;
 import org.jboss.netty.channel.Channel;
 import util.amf.Amf3;
+
+import java.util.ArrayList;
+
 import static global.Config.DEBUG;
 import static global.Static.outLn;
 
@@ -27,6 +30,7 @@ public class Player {
     private int level;
 
     private Tank tank;
+    private ArrayList<String> moves;
 
     private String passHash;
 
@@ -144,5 +148,9 @@ public class Player {
             if (DEBUG)
                 outLn("Message: "+ traceMessage+ "; size: "+size+" bytes");
         }
+    }
+
+    public void hang() {
+        //To change body of created methods use File | Settings | File Templates.
     }
 }

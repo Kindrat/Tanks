@@ -1,5 +1,7 @@
 package entities;
 
+import static global.Static.direction.*;
+
 /**
  * Created with IntelliJ IDEA.
  * User: legioner
@@ -15,8 +17,11 @@ public class Tank {
     private double maxAttackStrength;
     private double attackDistance;
     private double visibleDistance;
+    private double speed;
+    private int[] locationCoords;
 
     public Tank(){
+        locationCoords = new int[2];
     }
 
     public void reInitValues (){
@@ -77,6 +82,55 @@ public class Tank {
 
     public void setVisibleDistance(double visibleDistance) {
         this.visibleDistance = visibleDistance;
+    }
+
+    public double getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(double speed) {
+        this.speed = speed;
+    }
+
+    public int[] getLocationCoords() {
+        return locationCoords;
+    }
+
+    public void setLocationCoords(int[] locationCoords) {
+        this.locationCoords = locationCoords;
+    }
+
+    public void move(int direction){
+        switch (direction){
+            case N:
+                this.locationCoords[1]+=speed;
+                break;
+            case S:
+                this.locationCoords[1]-=speed;
+                break;
+            case E:
+                this.locationCoords[0]+=speed;
+                break;
+            case W:
+                this.locationCoords[0]-=speed;
+                break;
+            case NE:
+                this.locationCoords[0]+=speed/2;
+                this.locationCoords[1]+=speed/2;
+                break;
+            case NW:
+                this.locationCoords[0]-=speed/2;
+                this.locationCoords[1]+=speed/2;
+                break;
+            case SE:
+                this.locationCoords[0]+=speed/2;
+                this.locationCoords[1]-=speed/2;
+                break;
+            case SW:
+                this.locationCoords[0]-=speed/2;
+                this.locationCoords[1]-=speed/2;
+                break;
+        }
     }
 
     public double takeDamage (double enemyAttack){
