@@ -1,6 +1,6 @@
 package entities;
 
-import java.util.ArrayList;
+import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
@@ -13,12 +13,12 @@ public class Field {
     private double width;
     private double length;
 
-    private ArrayList<Tank> tanks;
+    private Map<Long, Player> players;
 
-    public Field(double width, double length, ArrayList<Tank> tanks){
+    public Field(double width, double length, Map<Long, Player> players){
         this.length=length;
         this.width=width;
-        this.tanks=tanks;
+        this.players=players;
 
         startGame();
     }

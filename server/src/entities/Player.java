@@ -5,7 +5,7 @@ import org.jboss.netty.buffer.ChannelBuffers;
 import org.jboss.netty.channel.Channel;
 import util.amf.Amf3;
 
-import java.util.ArrayList;
+import java.util.Map;
 
 import static global.Config.DEBUG;
 import static global.Static.outLn;
@@ -30,7 +30,7 @@ public class Player {
     private int level;
 
     private Tank tank;
-    private ArrayList<String> moves;
+    private Map<Integer, Integer> moves;
 
     private String passHash;
 

@@ -9,19 +9,9 @@ import entities.Player;
  * Time: 0:50
  */
 
-public class Move extends AMove {
+public class Move {
 
-    @Override
-    public void execute(String[] args, Player player) {
-        if (testArgs(args)){
-            player.getTank().move(Integer.valueOf(args[0]));
-        } else{
-            player.hang();
-        }
-
-    }
-
-    private boolean testArgs(String[] args) {
-        return false;
+    public void execute(Integer direction, Player player) {
+        player.getTank().move(direction);
     }
 }

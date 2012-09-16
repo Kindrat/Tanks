@@ -8,8 +8,8 @@ import entities.Player;
  * Date: 17.09.12
  * Time: 1:26
  */
-public class Attack extends AMove {
-    @Override
+public class Attack {
+
     public void execute(String[] args, Player player) {
         //To change body of implemented methods use File | Settings | File Templates.
     }

@@ -9,8 +9,8 @@ import entities.Player;
  * Time: 1:26
  */
 
-public class Search extends AMove {
-    @Override
+public class Search {
+
     public void execute(String[] args, Player player) {
         //To change body of implemented methods use File | Settings | File Templates.
     }
