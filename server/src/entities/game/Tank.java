@@ -1,6 +1,6 @@
-package entities;
+package entities.game;
 
-import static global.Static.direction.*;
+import entities.player.Player;
 
 /**
  * Created with IntelliJ IDEA.
@@ -17,11 +17,8 @@ public class Tank {
     private double maxAttackStrength;
     private double attackDistance;
     private double visibleDistance;
-    private double speed;
-    private int[] locationCoords;
 
     public Tank(){
-        locationCoords = new int[2];
     }
 
     public void reInitValues (){
@@ -84,55 +81,6 @@ public class Tank {
         this.visibleDistance = visibleDistance;
     }
 
-    public double getSpeed() {
-        return speed;
-    }
-
-    public void setSpeed(double speed) {
-        this.speed = speed;
-    }
-
-    public int[] getLocationCoords() {
-        return locationCoords;
-    }
-
-    public void setLocationCoords(int[] locationCoords) {
-        this.locationCoords = locationCoords;
-    }
-
-    public void move(int direction){
-        switch (direction){
-            case N:
-                this.locationCoords[1]+=speed;
-                break;
-            case S:
-                this.locationCoords[1]-=speed;
-                break;
-            case E:
-                this.locationCoords[0]+=speed;
-                break;
-            case W:
-                this.locationCoords[0]-=speed;
-                break;
-            case NE:
-                this.locationCoords[0]+=speed/2;
-                this.locationCoords[1]+=speed/2;
-                break;
-            case NW:
-                this.locationCoords[0]-=speed/2;
-                this.locationCoords[1]+=speed/2;
-                break;
-            case SE:
-                this.locationCoords[0]+=speed/2;
-                this.locationCoords[1]-=speed/2;
-                break;
-            case SW:
-                this.locationCoords[0]-=speed/2;
-                this.locationCoords[1]-=speed/2;
-                break;
-        }
-    }
-
     public double takeDamage (double enemyAttack){
         if (this.hp>enemyAttack){
             this.hp-=enemyAttack;
@@ -142,10 +90,9 @@ public class Tank {
         return this.hp;
     }
 
-    public void attackEnemy(Player enemy){
-        Tank enemyTank = enemy.getTank();
+    public double attackEnemy(Player enemy){
         //Для оптимизации в дальнейшем вынести рассчёт разницы максимума и минимума в инит класса
-        double attackStrength = this.minAttackStrength + (this.maxAttackStrength-this.minAttackStrength)/Math.random();
-        enemyTank.takeDamage(attackStrength);
+        double attackStrength;
+        return attackStrength = this.minAttackStrength + (this.maxAttackStrength-this.minAttackStrength)*Math.random();
     }
 }

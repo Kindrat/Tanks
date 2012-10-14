@@ -1,6 +1,6 @@
-package moves;
+package server.moves;
 
-import entities.Player;
+import entities.player.Player;
 
 /**
  * Created with IntelliJ IDEA.

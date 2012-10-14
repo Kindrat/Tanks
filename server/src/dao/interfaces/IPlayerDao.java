@@ -1,7 +1,6 @@
 package dao.interfaces;
 
-import entities.Player;
-import entities.Tank;
+import entities.player.Player;
 
 /**
  * Created with IntelliJ IDEA.
@@ -12,11 +11,12 @@ import entities.Tank;
 
 public interface IPlayerDao {
 
-    public abstract Player createPlayer(Player player);
+    public abstract Player create(Player player);
 
-    public abstract Player readPlayer(Player player);
+    public abstract Player read(Player player);
 
-    public abstract void updatePlayer(Player player);
+    public abstract void update(Player player);
 
-    public abstract Tank getTank(int tankId);
+    public abstract void delete(Player player);
+
 }

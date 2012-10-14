@@ -1,8 +1,9 @@
 package dao.implementations;
 
 import dao.interfaces.IPlayerDao;
-import entities.Player;
-import entities.Tank;
+import dao.interfaces.IStatisticDao;
+import dao.interfaces.ITankDao;
+import entities.player.Player;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,9 +12,10 @@ import java.sql.SQLException;
 
 import static dao.db.ISqlConst.*;
 import static dao.db.Utils.closeConnection;
+import static global.Config.DEBUG;
+import static global.Config.DEFAULT_TANK_ID;
 import static global.Static.outLn;
 import static java.sql.Statement.RETURN_GENERATED_KEYS;
-import static global.Config.DEBUG;
 
 /**
  * Created with IntelliJ IDEA.
@@ -25,9 +27,10 @@ import static global.Config.DEBUG;
 public class PgPlayerDao implements IPlayerDao{
 
     private final String TABLE = "public.users";
-    private final String COLUMNS = "(name,exp,money,tank_id)";
+    private final String COLUMNS = "(name,exp,tank_id)";
+
     @Override
-    public Player createPlayer(Player player) {
+    public Player create(Player player) {
         StringBuilder query = new StringBuilder();
         query.append(INSERT_INTO).append(TABLE).append(COLUMNS);
         query.append(VALUES).append(OPEN_BKT);
@@ -47,10 +50,12 @@ public class PgPlayerDao implements IPlayerDao{
             if (rs.next()){
                 player.setId(rs.getLong("id"));
                 player.setExp(rs.getLong("exp"));
-                player.setMoney(rs.getLong("money"));
-                player.setTankId(rs.getInt("tank_id"));
 
-                player.setTank(getTank(player.getTankId()));
+                ITankDao tankDao = new PgTankDao();
+                player.setTank(tankDao.readDefault(DEFAULT_TANK_ID));
+
+                IStatisticDao statisticDao = new PgStatisticDao();
+                player.setStatistic(statisticDao.create(player.getId()));
 
                 isCreate = true;
             }
@@ -74,9 +79,11 @@ public class PgPlayerDao implements IPlayerDao{
     }
 
     @Override
-    public Player readPlayer(Player player) {
+    public Player read(Player player) {
         StringBuilder query = new StringBuilder();
-        query.append(SELECT_ALL_FROM).append(TABLE).append(WHERE).append("passHash=").append(player.getPassHash()).append(SEMICOLON);
+        query.append(SELECT_ALL_FROM).append(TABLE).append(WHERE);
+        query.append("name=").append(player.getName()).append(AND);
+        query.append("passHash=").append(player.getPassHash()).append(SEMICOLON);
 
         Connection connection = FACTORY.getConnection();
 
@@ -87,9 +94,12 @@ public class PgPlayerDao implements IPlayerDao{
                 player.setId(rs.getLong("id"));
                 player.setName(rs.getString("name"));
                 player.setExp(rs.getLong("exp"));
-                player.setMoney(rs.getLong("money"));
-                player.setTankId(rs.getInt("tank_id"));
-                player.setTank(getTank(player.getTankId()));
+
+                ITankDao tankDao = new PgTankDao();
+                player.setTank(tankDao.readCustom(player.getId()));
+
+                IStatisticDao statisticDao = new PgStatisticDao();
+                player.setStatistic(statisticDao.read(player.getId()));
             }
             rs.close();
             ps.close();
@@ -105,13 +115,11 @@ public class PgPlayerDao implements IPlayerDao{
     }
 
     @Override
-    public void updatePlayer(Player player) {
+    public void update(Player player) {
         StringBuilder query = new StringBuilder();
         query.append(UPDATE).append(TABLE).append(SET);
         query.append("name=").append(player.getName()).append(COMMA);
-        query.append("exp=").append(player.getExp()).append(COMMA);
-        query.append("money=").append(player.getMoney()).append(COMMA);
-        query.append("tank_id=").append(player.getTankId());
+        query.append("exp=").append(player.getExp());
         query.append(WHERE).append("id=").append(player.getId()).append(SEMICOLON);
 
         Connection connection = FACTORY.getConnection();
@@ -132,26 +140,19 @@ public class PgPlayerDao implements IPlayerDao{
     }
 
     @Override
-    public Tank getTank(int tankId) {
-        Tank tank = new Tank();
+    public void delete(Player player) {
+        String TABLES = "users,statistic,tanks";
         StringBuilder query = new StringBuilder();
-        query.append(SELECT_ALL_FROM).append("const.tanks").append(WHERE).append("id=").append(tankId).append(SEMICOLON);
+        query.append(DELETE_FROM).append(TABLES).append(WHERE);
+        query.append("id=").append(player.getId()).append(AND);
+        query.append("statistic.player_id=").append(player.getId()).append(AND);
+        query.append("tanks.player_id=").append(player.getId()).append(SEMICOLON);
 
         Connection connection = FACTORY.getConnection();
 
         try{
             PreparedStatement ps = connection.prepareStatement(query.toString());
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()){
-                tank.setId(tankId);
-                tank.setName(rs.getString("name"));
-                tank.setHp(rs.getInt("hp"));
-                tank.setMinAttackStrength(rs.getLong("minAttackStrength"));
-                tank.setMaxAttackStrength(rs.getLong("maxAttackStrength"));
-                tank.setAttackDistance(rs.getLong("attackDistance"));
-                tank.setVisibleDistance(rs.getLong("visibleDistance"));
-            }
-            rs.close();
+            ps.execute();
             ps.close();
         }catch (SQLException e){
             e.printStackTrace();
@@ -162,6 +163,5 @@ public class PgPlayerDao implements IPlayerDao{
         if (DEBUG){
             outLn(">>DB Connection :    "+ query.toString());
         }
-        return tank;
     }
 }

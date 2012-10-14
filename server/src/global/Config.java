@@ -7,6 +7,10 @@ package global;
  * Time: 17:55
  */
 public class Config {
+    public static final boolean DEBUG = true;
 
-   public static final boolean DEBUG = true;
+    public static final String SERVER_VERSION = "0.0.1";
+    public static final String STATUS_MESSAGE = "OK";
+
+    public static final int DEFAULT_TANK_ID = 1;
 }

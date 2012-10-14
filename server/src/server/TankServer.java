@@ -3,11 +3,11 @@ package server;
 import org.jboss.netty.bootstrap.ServerBootstrap;
 import org.jboss.netty.channel.ChannelException;
 import org.jboss.netty.channel.ChannelFactory;
-import org.jboss.netty.channel.ChannelPipeline;
 import org.jboss.netty.channel.socket.nio.NioServerSocketChannelFactory;
 import org.jboss.netty.handler.execution.OrderedMemoryAwareThreadPoolExecutor;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
+import server.pipeline.PipelineFactory;
 
 import java.net.InetSocketAddress;
 import java.util.Timer;
@@ -26,7 +26,6 @@ import static global.Static.outLn;
 
 public class TankServer {
 
-    private static GameServerHandler gameServerHandler;
     private static ExecutorService bossExecutor;
     private static ExecutorService workerExecutor;
 
@@ -41,17 +40,16 @@ public class TankServer {
 
     private static void startGameServer(){
         ChannelFactory gameServer = new NioServerSocketChannelFactory(bossExecutor, workerExecutor, 4);
-        gameServerHandler = new GameServerHandler();
+        PipelineFactory gamePipeline = new PipelineFactory();
 
         ServerBootstrap gameBootstrap = new ServerBootstrap(gameServer);
+        gameBootstrap.setPipelineFactory(gamePipeline);
         gameBootstrap.setOption("backlog", 500);
         gameBootstrap.setOption("connectTimeoutMillis", 10000);
         gameBootstrap.setOption("child.tcpNoDelay", true);
         gameBootstrap.setOption("child.keepAlive", true);
         gameBootstrap.setOption("readWriteFair", true);
 
-        ChannelPipeline gamePipeline = gameBootstrap.getPipeline();
-        gamePipeline.addLast("handler", gameServerHandler);
 
         try{
             gameBootstrap.bind(new InetSocketAddress(gameServerPort));

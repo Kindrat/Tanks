@@ -1,6 +1,6 @@
 package commands;
 
-import entities.Player;
+import entities.player.Player;
 
 /**
  * Created with IntelliJ IDEA.
@@ -10,14 +10,8 @@ import entities.Player;
  */
 public abstract class Command {
 
-    public Command()
-    {
-    }
+    public Command() {}
 
-    public abstract void execute(String s,Player player);
+    public abstract void execute(Player player);
 
-    protected String[] splitParam(String param)
-    {
-        return param.split(";");
-    }
 }

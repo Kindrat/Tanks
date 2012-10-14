@@ -1,14 +1,8 @@
-package entities;
+package entities.player;
 
-import org.jboss.netty.buffer.ChannelBuffer;
-import org.jboss.netty.buffer.ChannelBuffers;
+import entities.game.Field;
+import entities.game.Tank;
 import org.jboss.netty.channel.Channel;
-import util.amf.Amf3;
-
-import java.util.Map;
-
-import static global.Config.DEBUG;
-import static global.Static.outLn;
 
 /**
  * Created with IntelliJ IDEA.
@@ -21,16 +15,13 @@ public class Player {
     private Channel channel;
     private long id;
     private String name;
-    private int tankId;
     private byte status;
-    private int winCount;
-    private int kills;
     private long exp;
-    private long money;
     private int level;
 
     private Tank tank;
-    private Map<Integer, Integer> moves;
+    private Statistic statistic;
+    private Field field;
 
     private String passHash;
 
@@ -40,6 +31,14 @@ public class Player {
 
     public Player (Channel channel){
         this.channel=channel;
+    }
+
+    public Channel getChannel() {
+        return channel;
+    }
+
+    public void setChannel(Channel channel) {
+        this.channel = channel;
     }
 
     public long getId() {
@@ -58,12 +57,20 @@ public class Player {
         this.name = name;
     }
 
-    public int getTankId() {
-        return tankId;
+    public Statistic getStatistic() {
+        return statistic;
     }
 
-    public void setTankId(int tankId) {
-        this.tankId = tankId;
+    public void setStatistic(Statistic statistic) {
+        this.statistic = statistic;
+    }
+
+    public Field getField() {
+        return field;
+    }
+
+    public void setField(Field field) {
+        this.field = field;
     }
 
     public byte getStatus() {
@@ -78,36 +85,12 @@ public class Player {
         return this.status == status;
     }
 
-    public int getWinCount() {
-        return winCount;
-    }
-
-    public void setWinCount(int winCount) {
-        this.winCount = winCount;
-    }
-
-    public int getKills() {
-        return kills;
-    }
-
-    public void setKills(int kills) {
-        this.kills = kills;
-    }
-
     public long getExp() {
         return exp;
     }
 
     public void setExp(long exp) {
         this.exp = exp;
-    }
-
-    public long getMoney() {
-        return money;
-    }
-
-    public void setMoney(long money) {
-        this.money = money;
     }
 
     public int getLevel() {
@@ -136,21 +119,7 @@ public class Player {
 
     public void sendData(Object obj) {
         if (channel != null && channel.isConnected() && channel.isOpen()) {
-            int size = 0;
-            String traceMessage = "";
-            byte bytes[] = Amf3.encode(obj);
-            ChannelBuffer buffer = ChannelBuffers.dynamicBuffer();
-            buffer.writeBytes(bytes);
-            channel.write(buffer);
-            size = bytes.length;
-            traceMessage = obj.toString();
-
-            if (DEBUG)
-                outLn("Message: "+ traceMessage+ "; size: "+size+" bytes");
+            channel.write(obj);
         }
-    }
-
-    public void hang() {
-        //To change body of created methods use File | Settings | File Templates.
     }
 }

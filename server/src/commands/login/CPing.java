@@ -1,8 +1,9 @@
 package commands.login;
 
 import commands.Command;
-import entities.Player;
-import objects.login.OPing;
+import entities.player.Player;
+import global.Config;
+import response.login.SPing;
 
 /**
  * Created with IntelliJ IDEA.
@@ -11,11 +12,11 @@ import objects.login.OPing;
  * Time: 16:48
  */
 public class CPing extends Command {
+
     @Override
-    public void execute(String s, Player player) {
+    public void execute(Player player) {
         if (player.hasStatus(Player.NOT_LOGGED_IN)){
-            String mes = "OK";
-            player.sendData(new OPing(mes));
+            player.sendData(new SPing(Config.SERVER_VERSION, Config.STATUS_MESSAGE));
         }
     }
 }

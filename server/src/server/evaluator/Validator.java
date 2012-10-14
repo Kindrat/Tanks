@@ -1,6 +1,6 @@
-package moves;
+package server.evaluator;
 
-import entities.Player;
+import entities.player.Player;
 
 import java.util.Map;
 

@@ -1,5 +1,11 @@
 package global;
 
+import entities.game.Field;
+import entities.player.Player;
+
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created with IntelliJ IDEA.
  * User: legioner
@@ -7,6 +13,11 @@ package global;
  * Time: 17:58
  */
 public class Static {
+
+    public static Map<Integer, Player> connected = new HashMap<>();
+    public static Map<Long, Player> authorized = new HashMap<>();
+    public static Map<Long, Player> zombie = new HashMap<>();
+    public static Map<Integer, Field> fields = new HashMap<>();
 
     public static void outLn (String s){
         System.out.println(s);

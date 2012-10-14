@@ -1,4 +1,4 @@
-package moves;
+package server.moves;
 
 import java.util.HashMap;
 import java.util.Map;
