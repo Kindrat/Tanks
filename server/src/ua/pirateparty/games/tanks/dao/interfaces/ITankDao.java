@@ -1,7 +1,10 @@
 package ua.pirateparty.games.tanks.dao.interfaces;
 
+import ua.pirateparty.games.tanks.server.entities.game.Activity;
 import ua.pirateparty.games.tanks.server.entities.player.Player;
 import ua.pirateparty.games.tanks.server.entities.game.Tank;
+
+import java.util.ArrayList;
 
 /**
  * Created with IntelliJ IDEA.
@@ -14,9 +17,15 @@ public interface ITankDao {
 
     public abstract Tank readDefault (int type);
 
-    public abstract void createCustom (Player player);
+    public abstract Tank create(Player player);
 
-    public abstract Tank readCustom (long playerId);
+    public abstract ArrayList<Tank> readAll(Player player);
 
-    public abstract void updateCustom (Player player);
+    public abstract Tank read (long tankId);
+
+    public abstract void updateStats(Tank tank);
+
+    public abstract void updateAI(ArrayList<Activity> tankAI, long tankId);
+
+    public abstract void delete(Player player);
 }

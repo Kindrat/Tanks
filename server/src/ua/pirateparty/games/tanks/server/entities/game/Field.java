@@ -1,7 +1,5 @@
 package ua.pirateparty.games.tanks.server.entities.game;
 
-import ua.pirateparty.games.tanks.server.entities.player.Player;
-
 import java.util.Map;
 
 /**
@@ -14,10 +12,10 @@ public class Field {
     private long width;
     private long height;
 
-    private Map<Long, Player> players;
-    private Map<Long, Player> zombies;
+    private Map<Long, Tank> players;
+    private Map<Long, Tank> zombies;
 
-    public Field(long width, long height, Map<Long, Player> players) {
+    public Field(long width, long height, Map<Long, Tank> players) {
         this.width=width;
         this.height=height;
         this.players=players;
@@ -39,19 +37,19 @@ public class Field {
         this.height = height;
     }
 
-    public Map<Long, Player> getPlayers() {
+    public Map<Long, Tank> getPlayers() {
         return players;
     }
 
-    public void setPlayers(Map<Long, Player> players) {
+    public void setPlayers(Map<Long, Tank> players) {
         this.players = players;
     }
 
-    public Map<Long, Player> getZombies() {
+    public Map<Long, Tank> getZombies() {
         return zombies;
     }
 
-    public void setZombies(Map<Long, Player> zombies) {
+    public void setZombies(Map<Long, Tank> zombies) {
         this.zombies = zombies;
     }
 }

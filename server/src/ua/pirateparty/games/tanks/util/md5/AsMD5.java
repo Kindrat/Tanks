@@ -1,8 +1,3 @@
-// Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
-// Jad home page: http://www.kpdus.com/jad.html
-// Decompiler options: packimports(3) 
-// Source File Name:   AsMD5.java
-
 package ua.pirateparty.games.tanks.util.md5;
 
 import com.sun.org.apache.xerces.internal.impl.dv.util.HexBin;

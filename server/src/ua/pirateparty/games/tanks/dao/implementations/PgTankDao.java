@@ -1,13 +1,12 @@
 package ua.pirateparty.games.tanks.dao.implementations;
 
 import ua.pirateparty.games.tanks.dao.interfaces.ITankDao;
+import ua.pirateparty.games.tanks.server.entities.game.Activity;
 import ua.pirateparty.games.tanks.server.entities.game.Tank;
 import ua.pirateparty.games.tanks.server.entities.player.Player;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 
 import static ua.pirateparty.games.tanks.dao.db.ISqlConst.*;
 import static ua.pirateparty.games.tanks.dao.db.Utils.closeConnection;
@@ -55,52 +54,27 @@ public class PgTankDao implements ITankDao{
         return tank;
     }
 
-    @Override
-    public void createCustom(Player player) {
-        Tank tank = player.getTank();
+    public Tank create(Player player) {
         StringBuilder query = new StringBuilder();
-        query.append(INSERT_INTO).append(TABLE).append(OPEN_BKT).append("player_id, name, hp, minAttackStrength, maxAttackStrength, attackDistance, visibleDistance").append(CLOSE_BKT);
-        query.append(VALUES).append(OPEN_BKT).append(player.getId()).append(COMMA);
-        query.append(tank.getName()).append(COMMA);
-        query.append(tank.getHp()).append(COMMA);
-        query.append(tank.getMinAttackStrength()).append(COMMA);
-        query.append(tank.getMaxAttackStrength()).append(COMMA);
-        query.append(tank.getAttackDistance()).append(COMMA);
-        query.append(tank.getVisibleDistance()).append(CLOSE_BKT).append(SEMICOLON);
-
-        Connection connection = FACTORY.getConnection();
-
-        try{
-            PreparedStatement ps = connection.prepareStatement(query.toString());
-            ps.execute();
-        }catch (SQLException e){
-            e.printStackTrace();
-        }finally {
-            closeConnection(connection);
-        }
-        trace(query);
-    }
-
-    @Override
-    public Tank readCustom(long playerId) {
-        StringBuilder query = new StringBuilder();
-        query.append(SELECT_ALL_FROM).append(TABLE).append(WHERE);
-        query.append("player_id=").append(playerId).append(SEMICOLON);
+        query.append(INSERT_INTO).append(TABLE).append(OPEN_BKT);
+        query.append("user_id, tank_id").append(CLOSE_BKT);
+        query.append(VALUES).append(OPEN_BKT);
+        query.append(player.getId()).append(COMMA);
+        query.append(player.getTank().getId()).append(CLOSE_BKT).append(SEMICOLON);
 
         Tank tank = new Tank();
         Connection connection = FACTORY.getConnection();
+        boolean isCreate = false;
 
         try{
-            PreparedStatement ps = connection.prepareStatement(query.toString());
-            ResultSet rs = ps.executeQuery();
+            PreparedStatement ps = connection.prepareStatement(query.toString(), Statement.RETURN_GENERATED_KEYS);
+            ps.execute();
+            ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()){
-                tank.setId(rs.getInt("type"));
-                tank.setHp(rs.getInt("hp"));
-                tank.setName(rs.getString("name"));
-                tank.setMinAttackStrength(rs.getDouble("minAttackStrength"));
-                tank.setMaxAttackStrength(rs.getDouble("maxAttackStrength"));
-                tank.setAttackDistance(rs.getDouble("attackDistance"));
-                tank.setVisibleDistance(rs.getDouble("visibleDistance"));
+                tank.setId(rs.getLong("tank_id"));
+                tank.setGames(rs.getLong("games"));
+                tank.setKills(rs.getLong("kills"));
+                tank.setDeaths(rs.getLong("deaths"));
             }
             rs.close();
             ps.close();
@@ -114,24 +88,104 @@ public class PgTankDao implements ITankDao{
     }
 
     @Override
-    public void updateCustom(Player player) {
-        Tank tank = player.getTank();
+    public ArrayList<Tank> readAll(Player player) {
+        ArrayList<Tank> allPlayerTanks = new ArrayList<>();
+        StringBuilder query = new StringBuilder();
+        query.append(SELECT_ALL_FROM).append(TABLE).append(WHERE).append("user_id=").append(player.getId()).append(SEMICOLON);
+
+        Tank tank = new Tank();
+        Connection connection = FACTORY.getConnection();
+
+        try{
+            PreparedStatement ps = connection.prepareStatement(query.toString());
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+                tank.setId(rs.getLong("tank_id"));
+                tank.setGames(rs.getLong("games"));
+                tank.setKills(rs.getLong("kills"));
+                tank.setDeaths(rs.getLong("deaths"));
+
+                allPlayerTanks.add(tank);
+            }
+            rs.close();
+            ps.close();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }finally {
+            closeConnection(connection);
+        }
+        trace(query);
+        return allPlayerTanks;
+    }
+
+    @Override
+    public Tank read(long tankId) {
+        Tank tank = new Tank();
+        StringBuilder query = new StringBuilder();
+        query.append(SELECT_ALL_FROM).append(TABLE).append(WHERE).append("tank_id=").append(tankId).append(SEMICOLON);
+
+        Connection connection = FACTORY.getConnection();
+
+        try{
+            PreparedStatement ps = connection.prepareStatement(query.toString());
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()){
+                tank.setId(tankId);
+                tank.setGames(rs.getLong("games"));
+                tank.setKills(rs.getLong("kills"));
+                tank.setDeaths(rs.getLong("deaths"));
+            }
+            rs.close();
+            ps.close();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }finally {
+            closeConnection(connection);
+        }
+        trace(query);
+        return tank;
+    }
+
+    @Override
+    public void updateStats(Tank tank) {
         StringBuilder query = new StringBuilder();
         query.append(UPDATE).append(TABLE).append(SET);
-        query.append("type=").append(tank.getId()).append(COMMA);
-        query.append("name=").append(tank.getName()).append(COMMA);
-        query.append("hp=").append(tank.getHp()).append(COMMA);
-        query.append("minAttackStrength=").append(tank.getMinAttackStrength()).append(COMMA);
-        query.append("maxAttackStrength=").append(tank.getMaxAttackStrength()).append(COMMA);
-        query.append("attackDistance=").append(tank.getAttackDistance()).append(COMMA);
-        query.append("visibleDistance=").append(tank.getVisibleDistance());
-        query.append(WHERE).append("player_id=").append(player.getId()).append(SEMICOLON);
+        query.append("games=").append(tank.getGames()).append(COMMA);
+        query.append("kills=").append(tank.getKills()).append(COMMA);
+        query.append("deaths=").append(tank.getDeaths()).append(WHERE);
+        query.append("tank_id=").append(tank.getId()).append(SEMICOLON);
 
         Connection connection = FACTORY.getConnection();
 
         try{
             PreparedStatement ps = connection.prepareStatement(query.toString());
             ps.execute();
+            ps.close();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }finally {
+            closeConnection(connection);
+        }
+        trace(query);
+    }
+
+    @Override
+    public void updateAI(ArrayList<Activity> tankAI, long tankId) {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public void delete(Player player) {
+        StringBuilder query = new StringBuilder();
+        query.append(DELETE_FROM).append(TABLE).append(WHERE);
+        query.append("tank_id=").append(player.getTank().getId()).append(SEMICOLON);
+
+        Connection connection = FACTORY.getConnection();
+
+        try{
+            PreparedStatement ps = connection.prepareStatement(query.toString());
+            ps.execute();
+            ps.close();
         }catch (SQLException e){
             e.printStackTrace();
         }finally {

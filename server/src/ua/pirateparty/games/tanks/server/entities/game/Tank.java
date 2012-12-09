@@ -1,7 +1,6 @@
 package ua.pirateparty.games.tanks.server.entities.game;
 
 import ua.pirateparty.games.tanks.server.entities.player.Player;
-import ua.pirateparty.games.tanks.server.entities.stat.TankStatistic;
 
 /**
  * Created with IntelliJ IDEA.
@@ -11,15 +10,17 @@ import ua.pirateparty.games.tanks.server.entities.stat.TankStatistic;
  */
 
 public class Tank {
-    private int id;
+    private long id;
+    private int type;
     private String name;
     private int hp;
     private double minAttackStrength;
     private double maxAttackStrength;
     private double attackDistance;
     private double visibleDistance;
-
-    private TankStatistic tankStatistic;
+    private long games;
+    private long kills;
+    private long deaths;
 
     public Tank(){
     }
@@ -28,12 +29,20 @@ public class Tank {
 
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
     }
 
     public String getName() {
@@ -84,12 +93,28 @@ public class Tank {
         this.visibleDistance = visibleDistance;
     }
 
-    public TankStatistic getTankStatistic() {
-        return tankStatistic;
+    public long getGames() {
+        return games;
     }
 
-    public void setTankStatistic(TankStatistic tankStatistic) {
-        this.tankStatistic = tankStatistic;
+    public void setGames(long games) {
+        this.games = games;
+    }
+
+    public long getKills() {
+        return kills;
+    }
+
+    public void setKills(long kills) {
+        this.kills = kills;
+    }
+
+    public long getDeaths() {
+        return deaths;
+    }
+
+    public void setDeaths(long deaths) {
+        this.deaths = deaths;
     }
 
     public double takeDamage (double enemyAttack){

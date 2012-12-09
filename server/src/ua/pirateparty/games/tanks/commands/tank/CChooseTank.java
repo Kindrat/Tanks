@@ -10,13 +10,29 @@ import ua.pirateparty.games.tanks.server.entities.player.Player;
  * Time: 22:28
  */
 public class CChooseTank extends Command {
+
+    private int tankId;
+
+    public int getTankId() {
+        return tankId;
+    }
+
+    public void setTankId(int tankId) {
+        this.tankId = tankId;
+    }
+
     @Override
     public void execute(Player player) {
-        //To change body of implemented methods use File | Settings | File Templates.
+/*        ITankDao tankDao = new PgTankDao();
+        tankDao.update(player);
+        player.setTank(tankDao.read(this.tankId));
+        player.getTank().setTankStatistic(tankDao.read(player));*/
     }
 
     @Override
     public String toString() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return "CChooseTank{"+
+                "tankId = "+this.tankId+
+                "}";
     }
 }

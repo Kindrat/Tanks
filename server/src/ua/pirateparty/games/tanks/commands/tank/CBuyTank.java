@@ -1,29 +1,15 @@
 package ua.pirateparty.games.tanks.commands.tank;
 
 import ua.pirateparty.games.tanks.commands.Command;
-import ua.pirateparty.games.tanks.server.entities.game.Activity;
 import ua.pirateparty.games.tanks.server.entities.player.Player;
-
-import java.util.ArrayList;
 
 /**
  * Created with IntelliJ IDEA.
  * User: legioner
- * Date: 17.10.12
- * Time: 22:35
+ * Date: 18.10.12
+ * Time: 0:29
  */
-public class CChangeTank extends Command {
-
-    private ArrayList<Activity> tankAI;
-
-    public ArrayList<Activity> getTankAI() {
-        return tankAI;
-    }
-
-    public void setTankAI(ArrayList<Activity> tankAI) {
-        this.tankAI = tankAI;
-    }
-
+public class CBuyTank extends Command {
     @Override
     public void execute(Player player) {
         //To change body of implemented methods use File | Settings | File Templates.

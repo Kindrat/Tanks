@@ -93,7 +93,7 @@ public class PgPlayerDao implements IPlayerDao{
                 player.setExp(rs.getLong("exp"));
 
                 ITankDao tankDao = new PgTankDao();
-                player.setTank(tankDao.readCustom(player.getId()));
+                //player.setTank(tankDao.readCustom(player.getId()));
 
                 IStatisticDao statisticDao = new PgStatisticDao();
                 player.setStatistic(statisticDao.read(player.getId()));
