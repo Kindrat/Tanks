@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<conf>
+	<server>
+		<port>20202</port>
+		<connectTimeoutMillis>10000</connectTimeoutMillis>
+		<backlog>500</backlog>
+		<resourceUsageTimerPeriod>3000000</resourceUsageTimerPeriod>
+	</server>
+
+	<database>
+		<maxConnections>100</maxConnections>
+		<user>postgres</user>
+		<pass>postgres</pass>
+		<host>localhost</host>
+		<base>tanks</base>
+	</database>
+</conf>

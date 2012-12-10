@@ -1,12 +1,12 @@
 package ua.pirateparty.games.tanks.server;
 
+import org.apache.log4j.PropertyConfigurator;
 import org.jboss.netty.bootstrap.ServerBootstrap;
 import org.jboss.netty.channel.ChannelException;
 import org.jboss.netty.channel.ChannelFactory;
 import org.jboss.netty.channel.socket.nio.NioServerSocketChannelFactory;
 import org.jboss.netty.handler.execution.OrderedMemoryAwareThreadPoolExecutor;
-import org.joda.time.DateTime;
-import org.joda.time.format.DateTimeFormat;
+import ua.pirateparty.games.tanks.server.conf.ExternalConfigReader;
 import ua.pirateparty.games.tanks.server.pipeline.PipelineFactory;
 
 import java.net.InetSocketAddress;
@@ -15,7 +15,8 @@ import java.util.TimerTask;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
 
-import static ua.pirateparty.games.tanks.global.Static.outLn;
+import static ua.pirateparty.games.tanks.util.log.Loggers.globalLogger;
+import static ua.pirateparty.games.tanks.util.log.Loggers.resourceUsageLogger;
 
 /**
  * Created with IntelliJ IDEA.
@@ -24,15 +25,13 @@ import static ua.pirateparty.games.tanks.global.Static.outLn;
  * Time: 15:20
  */
 
-public class TankServer {
+public class TankServer extends ExternalConfigReader{
 
     private static ExecutorService bossExecutor;
     private static ExecutorService workerExecutor;
 
-    private static final int gameServerPort = 30215;
-
     public static void main(String[] args){
-        System.setErr(System.out);
+        PropertyConfigurator.configure("log4j.properties");
         TankServer.initExecutors();
         TankServer.startGameServer();
         TankServer.startLogger();
@@ -44,20 +43,17 @@ public class TankServer {
 
         ServerBootstrap gameBootstrap = new ServerBootstrap(gameServer);
         gameBootstrap.setPipelineFactory(gamePipeline);
-        gameBootstrap.setOption("backlog", 500);
-        gameBootstrap.setOption("connectTimeoutMillis", 10000);
+        gameBootstrap.setOption("backlog", backlog);
+        gameBootstrap.setOption("connectTimeoutMillis", connectTimeoutMillis);
         gameBootstrap.setOption("child.tcpNoDelay", true);
         gameBootstrap.setOption("child.keepAlive", true);
         gameBootstrap.setOption("readWriteFair", true);
 
-
         try{
-            gameBootstrap.bind(new InetSocketAddress(gameServerPort));
-            outLn("==============================");
-            outLn("Server started on port: "+gameServerPort);
-            outLn("==============================");
+            gameBootstrap.bind(new InetSocketAddress(serverPort));
+            globalLogger.info("Server started on port: " + serverPort);
         }catch(ChannelException e){
-            e.printStackTrace();
+            globalLogger.error(e);
         }
     }
 
@@ -79,14 +75,12 @@ public class TankServer {
                 int max = (int)(Runtime.getRuntime().maxMemory() / divider);
                 int total = (int)(Runtime.getRuntime().totalMemory() / divider);
                 int count = Thread.activeCount();
-                String dateTime = DateTime.now().toString(DateTimeFormat.mediumDateTime());
-                String s = (new StringBuilder()).append(dateTime).append("\nFree memory: ").append(free).append(" Mb\n").append("Max memory: ").append(max).append(" Mb\n").append("Total memory: ").append(total).append(" Mb\n").append("Active threads: ").append(count).append("\n").toString();
-                outLn(s);
+                String message = (new StringBuilder()).append("Resources used:   ").append(" Free memory: ").append(free).append(" Mb | ").append("Max memory: ").append(max).append(" Mb | ").append("Total memory: ").append(total).append(" Mb | ").append("Active threads: ").append(count).toString();
+                resourceUsageLogger.info(message);
             }
 
         }
                 ;
-        long period = 600000;
-        timer.schedule(timerTask, 0, period);
+        timer.schedule(timerTask, 0, resourceUsageTimerPeriod);
     }
 }

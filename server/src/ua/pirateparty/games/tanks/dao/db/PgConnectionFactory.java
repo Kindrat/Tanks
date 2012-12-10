@@ -1,13 +1,15 @@
 package ua.pirateparty.games.tanks.dao.db;
 
-import org.dom4j.Document;
-import org.dom4j.DocumentException;
-import org.dom4j.io.SAXReader;
 import org.postgresql.ds.PGPoolingDataSource;
 import org.postgresql.jdbc2.optional.PoolingDataSource;
+import ua.pirateparty.games.tanks.server.conf.ExternalConfigReader;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
+
+import static ua.pirateparty.games.tanks.util.log.Loggers.dbLogger;
 
 /**
  * Created with IntelliJ IDEA.
@@ -16,54 +18,44 @@ import java.sql.SQLException;
  * Time: 2:07
  */
 
-public class PgConnectionFactory implements IConnectionFactory{
+public class PgConnectionFactory extends ExternalConfigReader implements IConnectionFactory{
 
     private static PGPoolingDataSource dataSource;
-    private static String user;
-    private static String pass;
-    private static String host;
-    private static String base;
+    private static Map<String, String> tables;
 
-    static
-    {
-        parseXml();
+    static {
         dataSource = new PoolingDataSource();
         dataSource.setUser(user);
         dataSource.setPassword(pass);
         dataSource.setServerName(host);
         dataSource.setDatabaseName(base);
-        dataSource.setMaxConnections(50);
+        dataSource.setMaxConnections(maxDBConnections);
+
+        tables = new HashMap<>();
+        tables.put("players", "players.players");
     }
 
-    public PgConnectionFactory(){ }
+    public PgConnectionFactory(){}
 
-    public Connection getConnection()
-    {
+    public Connection getConnection(){
         Connection connection = null;
-        try
-        {
+        try {
             connection = dataSource.getConnection();
-        }
-        catch(SQLException e)
-        {
-            e.printStackTrace();
+        } catch(SQLException e) {
+            dbLogger.error(e);
         }
         return connection;
     }
 
-    private static void parseXml()
-    {
-        try
-        {
-            Document document = (new SAXReader()).read("db.conf");
-            user = document.getRootElement().elementText("user");
-            pass = document.getRootElement().elementText("pass");
-            host = document.getRootElement().elementText("host");
-            base = document.getRootElement().elementText("base");
+    public static void closeConnection(Connection connection) {
+        try {
+            connection.close();
+        } catch(SQLException e) {
+            dbLogger.error(e);
         }
-        catch(DocumentException e)
-        {
-            e.printStackTrace();
-        }
+    }
+
+    public Map<String, String> getTables() {
+        return tables;
     }
 }

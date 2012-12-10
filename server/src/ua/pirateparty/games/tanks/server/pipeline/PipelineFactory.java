@@ -3,7 +3,9 @@ package ua.pirateparty.games.tanks.server.pipeline;
 import org.jboss.netty.channel.ChannelPipeline;
 import org.jboss.netty.channel.ChannelPipelineFactory;
 import org.jboss.netty.channel.Channels;
-import ua.pirateparty.games.tanks.server.GameServerHandler;
+import ua.pirateparty.games.tanks.server.handlers.GameServerHandler;
+import ua.pirateparty.games.tanks.server.decoders.AmfDecoder;
+import ua.pirateparty.games.tanks.server.encoders.AmfEncoder;
 
 /**
  * Created with IntelliJ IDEA.

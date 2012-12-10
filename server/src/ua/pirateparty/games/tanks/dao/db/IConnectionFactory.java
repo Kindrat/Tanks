@@ -1,6 +1,7 @@
 package ua.pirateparty.games.tanks.dao.db;
 
 import java.sql.Connection;
+import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
@@ -11,6 +12,7 @@ import java.sql.Connection;
 
 public interface IConnectionFactory
 {
-
     public abstract Connection getConnection();
+
+    public abstract Map<String, String> getTables();
 }

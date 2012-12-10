@@ -2,29 +2,66 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="59c371e3-f9f6-4c6c-83f9-f83595ea69c3" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/commands/tank/CBuyTank.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/server/entities/game/Activity.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/dao/implementations/PgTankStatisticDao.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/dao/interfaces/ITankStatisticDao.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/server/entities/stat/TankStatistic.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/server/moves/Attack.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/server/moves/Move.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/server/moves/MovesMap.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/server/moves/Search.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/commands/tank/CChangeTank.java" afterPath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/commands/tank/CChangeTank.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/commands/tank/CChooseTank.java" afterPath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/commands/tank/CChooseTank.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/commands/tank/CDeleteTank.java" afterPath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/commands/tank/CDeleteTank.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/commands/tank/CNewTank.java" afterPath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/commands/tank/CNewTank.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/dao/implementations/PgPlayerDao.java" afterPath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/dao/implementations/PgPlayerDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/dao/implementations/PgTankDao.java" afterPath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/dao/implementations/PgTankDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/dao/interfaces/ITankDao.java" afterPath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/dao/interfaces/ITankDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/server/entities/game/Field.java" afterPath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/server/entities/game/Field.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/server/entities/game/Tank.java" afterPath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/server/entities/game/Tank.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/protocols/amf/commands/login/CRegister.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/util/mail/EmailValidator.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/server/conf/ExternalConfigReader.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/util/log/Loggers.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/protocols/objects/UserData.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/dao/db/Utils.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/util/tracer/Tracer.java" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/commands/Command.java" afterPath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/protocols/amf/commands/Command.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/commands/login/CLogin.java" afterPath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/protocols/amf/commands/login/CLogin.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/commands/login/CPing.java" afterPath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/protocols/amf/commands/login/CPing.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/commands/player/CGetStat.java" afterPath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/protocols/amf/commands/player/CGetStat.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/commands/tank/CBuyTank.java" afterPath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/protocols/amf/commands/tank/CBuyTank.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/commands/tank/CChangeTank.java" afterPath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/protocols/amf/commands/tank/CChangeTank.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/commands/tank/CChooseTank.java" afterPath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/protocols/amf/commands/tank/CChooseTank.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/commands/tank/CDeleteTank.java" afterPath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/protocols/amf/commands/tank/CDeleteTank.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/commands/tank/CGetAllTanks.java" afterPath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/protocols/amf/commands/tank/CGetAllTanks.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/commands/tank/CNewTank.java" afterPath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/protocols/amf/commands/tank/CNewTank.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/dao/implementations/PgPlayerDao.java" afterPath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/dao/implementations/PlayerDao.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/dao/implementations/PgStatisticDao.java" afterPath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/dao/implementations/StatisticDao.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/dao/implementations/PgTankDao.java" afterPath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/dao/implementations/TankDao.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/global/Config.java" afterPath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/server/conf/Constants.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/global/Static.java" afterPath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/server/logic/OnlineUsersManager.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/response/Response.java" afterPath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/protocols/amf/responses/Response.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/response/error/ErrorMessages.java" afterPath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/protocols/amf/responses/error/ErrorMessages.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/response/error/IErrors.java" afterPath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/protocols/amf/responses/error/IErrors.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/response/error/SError.java" afterPath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/protocols/amf/responses/error/SError.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/response/login/SPing.java" afterPath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/protocols/amf/responses/login/SPing.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/response/login/SProfile.java" afterPath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/protocols/amf/responses/login/SProfile.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/server/GameServerHandler.java" afterPath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/server/handlers/GameServerHandler.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/server/evaluator/Validator.java" afterPath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/server/logic/evaluator/Validator.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/server/pipeline/AmfDecoder.java" afterPath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/server/decoders/AmfDecoder.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/server/pipeline/AmfEncoder.java" afterPath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/server/encoders/AmfEncoder.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/util/md5/AsMD5.java" afterPath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/util/md5/AsMD5.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/dao/db/IConnectionFactory.java" afterPath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/dao/db/IConnectionFactory.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/dao/interfaces/IPlayerDao.java" afterPath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/dao/interfaces/IPlayerDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/dao/db/PgConnectionFactory.java" afterPath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/dao/db/PgConnectionFactory.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/server/pipeline/PipelineFactory.java" afterPath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/server/pipeline/PipelineFactory.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/server/TankServer.java" afterPath="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/server/TankServer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Tanks.iws" />
     <ignored path=".idea/workspace.xml" />
+    <file path="/Dummy.txt" changelist="59c371e3-f9f6-4c6c-83f9-f83595ea69c3" time="1355059844514" ignored="false" />
+    <file path="/TankServer.java" changelist="59c371e3-f9f6-4c6c-83f9-f83595ea69c3" time="1355062538159" ignored="false" />
+    <file path="/AmfDecoder.java" changelist="59c371e3-f9f6-4c6c-83f9-f83595ea69c3" time="1355061509340" ignored="false" />
+    <file path="/AmfEncoder.java" changelist="59c371e3-f9f6-4c6c-83f9-f83595ea69c3" time="1355061580052" ignored="false" />
+    <file path="/GameServerHandler.java" changelist="59c371e3-f9f6-4c6c-83f9-f83595ea69c3" time="1355063725735" ignored="false" />
+    <file path="/Validator.java" changelist="59c371e3-f9f6-4c6c-83f9-f83595ea69c3" time="1355061868181" ignored="false" />
+    <file path="/a.dummy" changelist="59c371e3-f9f6-4c6c-83f9-f83595ea69c3" time="1355061795091" ignored="false" />
+    <file path="/PgConnectionFactory.java" changelist="59c371e3-f9f6-4c6c-83f9-f83595ea69c3" time="1355096829062" ignored="false" />
+    <file path="/PlayerDao.java" changelist="59c371e3-f9f6-4c6c-83f9-f83595ea69c3" time="1355097244092" ignored="false" />
+    <file path="/AsMD5.java" changelist="59c371e3-f9f6-4c6c-83f9-f83595ea69c3" time="1355062208245" ignored="false" />
+    <file path="/ExternalConfigReader.java" changelist="59c371e3-f9f6-4c6c-83f9-f83595ea69c3" time="1355062638871" ignored="false" />
+    <file path="/Constants.java" changelist="59c371e3-f9f6-4c6c-83f9-f83595ea69c3" time="1355062343956" ignored="false" />
+    <file path="/CRegister.java" changelist="59c371e3-f9f6-4c6c-83f9-f83595ea69c3" time="1355097734213" ignored="false" />
+    <file path="/IPlayerDao.java" changelist="59c371e3-f9f6-4c6c-83f9-f83595ea69c3" time="1355096686291" ignored="false" />
+    <file path="/IConnectionFactory.java" changelist="59c371e3-f9f6-4c6c-83f9-f83595ea69c3" time="1355096878391" ignored="false" />
+    <file path="/UserData.java" changelist="59c371e3-f9f6-4c6c-83f9-f83595ea69c3" time="1355097805366" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +76,8 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <breakpoint_any>
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
+    <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
         <option name="NOTIFY_UNCAUGHT" value="true" />
@@ -47,6 +85,7 @@
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
         <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
         <option name="COUNT_FILTER_ENABLED" value="false" />
         <option name="COUNT_FILTER" value="0" />
         <option name="CONDITION_ENABLED" value="false" />
@@ -62,6 +101,7 @@
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
         <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
         <option name="COUNT_FILTER_ENABLED" value="false" />
         <option name="COUNT_FILTER" value="0" />
         <option name="CONDITION_ENABLED" value="false" />
@@ -71,90 +111,96 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
+    <breakpoint_rules default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="Tanks" />
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="CChooseTank.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ua/pirateparty/games/tanks/commands/tank/CChooseTank.java">
+      <file leaf-file-name="CLogin.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ua/pirateparty/games/tanks/protocols/amf/commands/login/CLogin.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="2" selection-start="519" selection-end="714" vertical-scroll-proportion="0.0">
+            <state line="56" column="21" selection-start="1377" selection-end="1497" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PgPlayerDao.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/ua/pirateparty/games/tanks/dao/implementations/PgPlayerDao.java">
+      <file leaf-file-name="CRegister.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ua/pirateparty/games/tanks/protocols/amf/commands/login/CRegister.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="95" column="18" selection-start="3251" selection-end="3251" vertical-scroll-proportion="0.01858736">
+            <state line="56" column="45" selection-start="1343" selection-end="1343" vertical-scroll-proportion="0.516129">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EmailValidator.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ua/pirateparty/games/tanks/util/mail/EmailValidator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="103" column="93" selection-start="5728" selection-end="5728" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AsMD5.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ua/pirateparty/games/tanks/util/md5/AsMD5.java">
+      <file leaf-file-name="PlayerDao.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ua/pirateparty/games/tanks/dao/implementations/PlayerDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="123" column="30" selection-start="4343" selection-end="4343" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IConnectionFactory.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ua/pirateparty/games/tanks/dao/db/IConnectionFactory.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="16" column="52" selection-start="324" selection-end="324" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PgConnectionFactory.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ua/pirateparty/games/tanks/dao/db/PgConnectionFactory.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="58" column="22" selection-start="1583" selection-end="1583" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IPlayerDao.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ua/pirateparty/games/tanks/dao/interfaces/IPlayerDao.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="17" column="63" selection-start="402" selection-end="402" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="GameServerHandler.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ua/pirateparty/games/tanks/server/GameServerHandler.java">
+        <entry file="file://$PROJECT_DIR$/src/ua/pirateparty/games/tanks/server/handlers/GameServerHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="13" selection-start="434" selection-end="434" vertical-scroll-proportion="0.0">
+            <state line="20" column="26" selection-start="670" selection-end="670" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PgTankDao.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ua/pirateparty/games/tanks/dao/implementations/PgTankDao.java">
+      <file leaf-file-name="Command.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ua/pirateparty/games/tanks/protocols/amf/commands/Command.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="31" selection-start="722" selection-end="722" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Tank.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ua/pirateparty/games/tanks/server/entities/game/Tank.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="19" selection-start="537" selection-end="537" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Field.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ua/pirateparty/games/tanks/server/entities/game/Field.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="51" column="41" selection-start="1027" selection-end="1027" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TankServer.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ua/pirateparty/games/tanks/server/TankServer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="54" column="60" selection-start="1886" selection-end="1886" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ITankDao.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ua/pirateparty/games/tanks/dao/interfaces/ITankDao.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="17" selection-start="381" selection-end="381" vertical-scroll-proportion="0.0">
+            <state line="10" column="0" selection-start="216" selection-end="365" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -170,25 +216,30 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="GitLogSettings">
+    <option name="myDateState">
+      <MyDateState />
+    </option>
+  </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/server/moves/Search.java" />
-        <option value="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/server/entities/game/Activity.java" />
-        <option value="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/commands/tank/CNewTank.java" />
-        <option value="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/commands/tank/CDeleteTank.java" />
-        <option value="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/commands/tank/CChangeTank.java" />
-        <option value="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/commands/tank/CBuyTank.java" />
-        <option value="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/dao/interfaces/ITankDao.java" />
-        <option value="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/dao/implementations/PgTankDao.java" />
-        <option value="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/server/entities/game/Tank.java" />
-        <option value="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/server/entities/game/Field.java" />
-        <option value="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/util/test/Test2.java" />
-        <option value="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/util/test/Test.java" />
-        <option value="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/commands/tank/CChooseTank.java" />
-        <option value="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/dao/implementations/PgPlayerDao.java" />
-        <option value="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/server/TankServer.java" />
+        <option value="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/dao/implementations/StatisticDao.java" />
+        <option value="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/dao/implementations/TankDao.java" />
         <option value="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/util/md5/AsMD5.java" />
+        <option value="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/server/conf/Constants.java" />
+        <option value="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/server/conf/ExternalConfigReader.java" />
+        <option value="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/server/TankServer.java" />
+        <option value="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/protocols/amf/commands/login/CPing.java" />
+        <option value="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/protocols/amf/commands/login/CLogin.java" />
+        <option value="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/server/handlers/GameServerHandler.java" />
+        <option value="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/dao/interfaces/IPlayerDao.java" />
+        <option value="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/dao/db/IConnectionFactory.java" />
+        <option value="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/dao/db/PgConnectionFactory.java" />
+        <option value="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/dao/implementations/PlayerDao.java" />
+        <option value="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/util/mail/EmailValidator.java" />
+        <option value="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/protocols/amf/commands/login/CRegister.java" />
+        <option value="$PROJECT_DIR$/src/ua/pirateparty/games/tanks/protocols/objects/UserData.java" />
       </list>
     </option>
   </component>
@@ -223,6 +274,30 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Tanks" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Tanks" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -303,11 +378,33 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="protocols" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="objects" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Tanks" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="server" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="pipeline" />
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tanks" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="protocols" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -342,14 +439,6 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tanks" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dao" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -361,80 +450,8 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
+              <option name="myItemId" value="lib" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tanks" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dao" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="implementations" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Tanks" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tanks" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="commands" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Tanks" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="PackagesPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Tanks" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Tanks" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -443,13 +460,14 @@
   </component>
   <component name="PropertiesComponent">
     <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="recentsLimit" value="5" />
     <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
     <property name="MemberChooser.sorted" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/log4j-1.2.17.jar!/" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
@@ -469,12 +487,7 @@
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m" />
       <option name="PROGRAM_PARAMETERS" />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
+      <method />
     </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
@@ -482,11 +495,7 @@
       <option name="SHMEM_ADDRESS" value="javadebug" />
       <option name="HOST" value="localhost" />
       <option name="PORT" value="5005" />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
+      <method />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
@@ -513,12 +522,7 @@
       <envs />
       <properties />
       <listeners />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
+      <method />
     </configuration>
     <configuration default="true" type="Applet" factoryName="Applet">
       <module name="" />
@@ -531,12 +535,7 @@
       <option name="VM_PARAMETERS" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
+      <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" />
@@ -550,12 +549,7 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="" />
       <envs />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
+      <method />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <module name="" />
@@ -575,12 +569,7 @@
       </option>
       <envs />
       <patterns />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
+      <method />
     </configuration>
     <configuration default="false" name="TankServer" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="ua.pirateparty.games.tanks.server.TankServer" />
@@ -637,26 +626,26 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="51" width="1680" height="974" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32748538" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32865497" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2555147" sideWeight="0.6709602" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290398" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25520197" sideWeight="0.67134506" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32865497" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290398" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290398" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -683,7 +672,6 @@
     <option name="PERFORM_ADD_REMOVE_IN_BACKGROUND" value="true" />
     <option name="PERFORM_ROLLBACK_IN_BACKGROUND" value="false" />
     <option name="CHECK_LOCALLY_CHANGED_CONFLICTS_IN_BACKGROUND" value="false" />
-    <option name="ENABLE_BACKGROUND_PROCESSES" value="false" />
     <option name="CHANGED_ON_SERVER_INTERVAL" value="60" />
     <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
@@ -693,9 +681,11 @@
     <option name="SOFT_WRAPS_IN_SHORT_DIFF" value="true" />
     <option name="INCLUDE_TEXT_INTO_PATCH" value="false" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
-    <option name="CREATE_PATCH_EXPAND_DETAILS_DEFAULT" value="true" />
     <option name="SHOW_FILE_HISTORY_DETAILS" value="true" />
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
+    <option name="SHOW_DIRTY_RECURSIVELY" value="false" />
+    <option name="LIMIT_HISTORY" value="true" />
+    <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
     <option name="LAST_COMMIT_MESSAGE" />
@@ -720,86 +710,120 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/ua/pirateparty/games/tanks/commands/tank/CNewTank.java">
+    <entry file="file://$PROJECT_DIR$/src/ua/pirateparty/games/tanks/server/TankServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="5" selection-start="745" selection-end="745" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ua/pirateparty/games/tanks/server/entities/game/Activity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="23" selection-start="368" selection-end="368" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ua/pirateparty/games/tanks/commands/tank/CDeleteTank.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="22" selection-start="504" selection-end="590" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ua/pirateparty/games/tanks/commands/tank/CChangeTank.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="42" selection-start="395" selection-end="395" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ua/pirateparty/games/tanks/commands/tank/CBuyTank.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="8" selection-start="361" selection-end="438" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ua/pirateparty/games/tanks/server/pipeline/AmfDecoder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="13" selection-start="681" selection-end="681" vertical-scroll-proportion="0.2851711" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ua/pirateparty/games/tanks/server/pipeline/AmfEncoder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="13" selection-start="679" selection-end="679" vertical-scroll-proportion="0.2851711" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ua/pirateparty/games/tanks/commands/tank/CChooseTank.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="2" selection-start="519" selection-end="714" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ua/pirateparty/games/tanks/dao/implementations/PgPlayerDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="95" column="18" selection-start="3251" selection-end="3251" vertical-scroll-proportion="0.01858736">
+        <state line="33" column="19" selection-start="1157" selection-end="1157" vertical-scroll-proportion="0.47663552">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ua/pirateparty/games/tanks/util/md5/AsMD5.java">
+    <entry file="file://$PROJECT_DIR$/src/ua/pirateparty/games/tanks/server/conf/Constants.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ua/pirateparty/games/tanks/server/GameServerHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="13" selection-start="434" selection-end="434" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ua/pirateparty/games/tanks/dao/implementations/PgTankDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="31" selection-start="722" selection-end="722" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ua/pirateparty/games/tanks/server/entities/game/Tank.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="19" selection-start="537" selection-end="537" vertical-scroll-proportion="0.0" />
+        <state line="13" column="65" selection-start="377" selection-end="387" vertical-scroll-proportion="0.3558394">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ua/pirateparty/games/tanks/server/entities/game/Field.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="41" selection-start="1027" selection-end="1027" vertical-scroll-proportion="0.0" />
+        <state line="20" column="24" selection-start="464" selection-end="464" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ua/pirateparty/games/tanks/server/TankServer.java">
+    <entry file="file://$PROJECT_DIR$/src/ua/pirateparty/games/tanks/server/handlers/GameServerHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="60" selection-start="1886" selection-end="1886" vertical-scroll-proportion="0.0" />
+        <state line="20" column="26" selection-start="670" selection-end="670" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ua/pirateparty/games/tanks/dao/interfaces/ITankDao.java">
+    <entry file="file://$PROJECT_DIR$/src/ua/pirateparty/games/tanks/protocols/amf/commands/Command.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="17" selection-start="381" selection-end="381" vertical-scroll-proportion="0.0" />
+        <state line="10" column="0" selection-start="216" selection-end="365" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ua/pirateparty/games/tanks/protocols/amf/responses/Response.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="21" selection-start="186" selection-end="225" vertical-scroll-proportion="0.3010949">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ua/pirateparty/games/tanks/protocols/amf/responses/login/SPing.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="29" selection-start="946" selection-end="946" vertical-scroll-proportion="0.8521898">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ua/pirateparty/games/tanks/protocols/amf/commands/login/CPing.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="33" selection-start="697" selection-end="697" vertical-scroll-proportion="0.41058394">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ua/pirateparty/games/tanks/protocols/amf/commands/login/CLogin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="56" column="21" selection-start="1377" selection-end="1497" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ua/pirateparty/games/tanks/dao/interfaces/IPlayerDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="63" selection-start="402" selection-end="402" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ua/pirateparty/games/tanks/dao/db/PgConnectionFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="58" column="22" selection-start="1583" selection-end="1583" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ua/pirateparty/games/tanks/dao/db/IConnectionFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="52" selection-start="324" selection-end="324" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ua/pirateparty/games/tanks/dao/implementations/PlayerDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="123" column="30" selection-start="4343" selection-end="4343" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ua/pirateparty/games/tanks/util/mail/EmailValidator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="103" column="93" selection-start="5728" selection-end="5728" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ua/pirateparty/games/tanks/protocols/objects/UserData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="21" selection-start="214" selection-end="214" vertical-scroll-proportion="0.28462997">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ua/pirateparty/games/tanks/protocols/amf/commands/login/CRegister.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="56" column="45" selection-start="1343" selection-end="1343" vertical-scroll-proportion="0.516129">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
       </provider>
     </entry>
   </component>

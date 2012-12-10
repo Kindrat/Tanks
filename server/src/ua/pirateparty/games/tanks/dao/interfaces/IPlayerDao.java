@@ -15,6 +15,8 @@ public interface IPlayerDao {
 
     public abstract Player read(Player player);
 
+    public abstract boolean read(String name, char[] passHash);
+
     public abstract void update(Player player);
 
     public abstract void delete(Player player);
