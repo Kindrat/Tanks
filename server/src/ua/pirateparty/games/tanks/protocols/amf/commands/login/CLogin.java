@@ -17,7 +17,7 @@ import static ua.pirateparty.games.tanks.server.logic.OnlineUsersManager.authori
 public class CLogin extends Command{
 
     private String login;
-    private String passHash;
+    private char[] passHash;
 
     public String getLogin() {
         return login;
@@ -27,11 +27,11 @@ public class CLogin extends Command{
         this.login = login;
     }
 
-    public String getPassHash() {
+    public char[] getPassHash() {
         return passHash;
     }
 
-    public void setPassHash(String passHash) {
+    public void setPassHash(char[] passHash) {
         this.passHash = passHash;
     }
 

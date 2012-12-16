@@ -33,6 +33,8 @@ public class PgConnectionFactory extends ExternalConfigReader implements IConnec
 
         tables = new HashMap<>();
         tables.put("players", "players.players");
+        tables.put("roomIds", "rooms.ids");
+        tables.put("roomParams", "rooms.params");
     }
 
     public PgConnectionFactory(){}

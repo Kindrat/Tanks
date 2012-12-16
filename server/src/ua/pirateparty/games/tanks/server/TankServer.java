@@ -7,6 +7,7 @@ import org.jboss.netty.channel.ChannelFactory;
 import org.jboss.netty.channel.socket.nio.NioServerSocketChannelFactory;
 import org.jboss.netty.handler.execution.OrderedMemoryAwareThreadPoolExecutor;
 import ua.pirateparty.games.tanks.server.conf.ExternalConfigReader;
+import ua.pirateparty.games.tanks.server.entities.lobby.Lobby;
 import ua.pirateparty.games.tanks.server.pipeline.PipelineFactory;
 
 import java.net.InetSocketAddress;
@@ -29,12 +30,14 @@ public class TankServer extends ExternalConfigReader{
 
     private static ExecutorService bossExecutor;
     private static ExecutorService workerExecutor;
+    public static Lobby lobby;
 
     public static void main(String[] args){
         PropertyConfigurator.configure("log4j.properties");
         TankServer.initExecutors();
         TankServer.startGameServer();
         TankServer.startLogger();
+        TankServer.initLobby();
     }
 
     private static void startGameServer(){
@@ -82,5 +85,9 @@ public class TankServer extends ExternalConfigReader{
         }
                 ;
         timer.schedule(timerTask, 0, resourceUsageTimerPeriod);
+    }
+
+    private static void initLobby(){
+        lobby = Lobby.getInstance();
     }
 }

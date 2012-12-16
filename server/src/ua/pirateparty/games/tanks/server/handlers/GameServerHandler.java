@@ -17,21 +17,18 @@ import static ua.pirateparty.games.tanks.util.log.Loggers.globalLogger;
 
 public class GameServerHandler extends SimpleChannelHandler {
 
-    private Channel channel;
-    private Player player;
-
     public synchronized void channelConnected(ChannelHandlerContext ctx, ChannelStateEvent e) throws Exception
     {
-        channel=e.getChannel();
-        player = new Player(channel);
+        Channel channel=e.getChannel();
+        Player player = new Player(channel);
         connected.put(channel.getId(), player);
         globalLogger.debug("Channel connected "+channel.getId());
     }
 
     public void channelDisconnected(ChannelHandlerContext ctx, ChannelStateEvent e) throws Exception
     {
-        channel=e.getChannel();
-        player=connected.get(channel.getId());
+        Channel channel=e.getChannel();
+        Player player=connected.get(channel.getId());
 
         //TODO обработка дисконнекта для плеера;
         if (player != null && !player.hasStatus(Player.NOT_LOGGED_IN)){
@@ -48,8 +45,8 @@ public class GameServerHandler extends SimpleChannelHandler {
 
     public synchronized void messageReceived (ChannelHandlerContext ctx, MessageEvent e) throws Exception
     {
-        channel=e.getChannel();
-        player=connected.get(channel.getId());
+        Channel channel=e.getChannel();
+        Player player=connected.get(channel.getId());
         Command command = (Command)e.getMessage();
         command.execute(player);
 
@@ -59,6 +56,4 @@ public class GameServerHandler extends SimpleChannelHandler {
     {
         globalLogger.error(e);
     }
-
-    private static void initFields(){}
 }

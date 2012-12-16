@@ -15,8 +15,8 @@ public class SPing extends Response {
     private String status;
 
     public SPing(String version, String status){
-        this.version=version;
-        this.status = status;
+        this.version    = version;
+        this.status     = status;
     }
 
     public String getVersion() {
@@ -36,7 +36,6 @@ public class SPing extends Response {
     }
 
     public String toString (){
-        String version = "0.0.1";
         return "SPing{" +
                 "version='" + version + '\'' +
                 ", status='" + this.status + '\'' +

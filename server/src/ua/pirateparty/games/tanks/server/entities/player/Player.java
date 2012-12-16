@@ -20,15 +20,18 @@ public class Player {
     private long exp;
     private int level;
 
+    private int roomId;
     private Tank tank;
     private Statistic statistic;
     private Field field;
 
-    private String passHash;
+    private char[] passHash;
 
     public static byte NOT_LOGGED_IN = 0;
-    public static byte LOGGED_IN = 1;
-    public static byte IN_GAME = 2;
+    public static byte IN_LOBBY = 1;
+    public static byte IN_ROOM = 2;
+    public static byte WAITING_FOR_START = 3;
+    public static byte IN_GAME = 4;
 
     public Player (Channel channel){
         this.channel=channel;
@@ -102,6 +105,14 @@ public class Player {
         this.level = level;
     }
 
+    public int getRoomId() {
+        return roomId;
+    }
+
+    public void setRoomId(int roomId) {
+        this.roomId = roomId;
+    }
+
     public Tank getTank() {
         return tank;
     }
@@ -110,11 +121,11 @@ public class Player {
         this.tank = tank;
     }
 
-    public String getPassHash() {
+    public char[] getPassHash() {
         return passHash;
     }
 
-    public void setPassHash(String hash) {
+    public void setPassHash(char[] hash) {
         this.passHash = hash;
     }
 
