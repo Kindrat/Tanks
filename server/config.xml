@@ -12,6 +12,6 @@
 		<user>postgres</user>
 		<pass>postgres</pass>
 		<host>localhost</host>
-		<base>tanks</base>
+		<base>Tanks</base>
 	</database>
 </conf>
