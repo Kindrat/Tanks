@@ -1,16 +1,21 @@
 package ua.pirateparty.games.tanks.server;
 
-import org.apache.log4j.PropertyConfigurator;
 import org.jboss.netty.bootstrap.ServerBootstrap;
 import org.jboss.netty.channel.ChannelException;
 import org.jboss.netty.channel.ChannelFactory;
 import org.jboss.netty.channel.socket.nio.NioServerSocketChannelFactory;
 import org.jboss.netty.handler.execution.OrderedMemoryAwareThreadPoolExecutor;
-import ua.pirateparty.games.tanks.server.conf.ExternalConfigReader;
+import ua.pirateparty.games.tanks.persistence.domain.Player;
 import ua.pirateparty.games.tanks.server.entities.lobby.Lobby;
 import ua.pirateparty.games.tanks.server.pipeline.PipelineFactory;
+import ua.pirateparty.games.tanks.util.log.Loggers;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
 import java.net.InetSocketAddress;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ExecutorService;
@@ -19,18 +24,43 @@ import java.util.concurrent.TimeUnit;
 import static ua.pirateparty.games.tanks.util.log.Loggers.globalLogger;
 import static ua.pirateparty.games.tanks.util.log.Loggers.resourceUsageLogger;
 
-public class TankServer extends ExternalConfigReader{
+public class TankServer {
 
     private static ExecutorService bossExecutor;
     private static ExecutorService workerExecutor;
+    private EntityManager manager;
     public static Lobby lobby;
 
+    public TankServer(EntityManager manager) {
+        this.manager = manager;
+    }
+
     public static void main(String[] args) {
-        PropertyConfigurator.configure("log4j.properties");
+        //PropertyConfigurator.configure("log4j.properties");
         TankServer.initExecutors();
         TankServer.startGameServer();
         TankServer.startLogger();
         TankServer.initLobby();
+        TankServer.testDatabase();
+    }
+
+    private static void testDatabase(){
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("tanksPostgres");
+        EntityManager manager = factory.createEntityManager();
+        TankServer test = new TankServer(manager);
+
+        EntityTransaction tx = manager.getTransaction();
+        tx.begin();
+        try {
+            test.createEmployees();
+        } catch (Exception e) {
+            Loggers.globalLogger.error("TankServer.testDatabase\t"+e.getMessage());
+        }
+        tx.commit();
+
+        test.listEmployees();
+
+        System.out.println(".. done");
     }
 
     private static void startGameServer() {
@@ -79,5 +109,18 @@ public class TankServer extends ExternalConfigReader{
 
     private static void initLobby(){
         lobby = Lobby.getInstance();
+    }
+
+    private void createEmployees() {
+        manager.persist(new Player());
+    }
+
+
+    private void listEmployees() {
+        List<Player> resultList = manager.createQuery("Select a From Player a", Player.class).getResultList();
+        System.out.println("num of players:" + resultList.size());
+        for (Player next : resultList) {
+            System.out.println("next player: " + next);
+        }
     }
 }
