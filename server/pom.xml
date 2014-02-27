@@ -4,21 +4,91 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>tank-server</groupId>
-    <artifactId>tank-server</artifactId>
+    <groupId>programmer-wars</groupId>
+    <artifactId>tanks</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>common</module>
+        <module>serverLogic</module>
+    </modules>
+
+    <developers>
+        <developer>
+            <id>Kindrat</id>
+            <name>Oleksii Ignachuk</name>
+            <email>legioner@pp-ua.org</email>
+            <url>http://pp-ua.org</url>
+        </developer>
+    </developers>
+
+    <repositories>
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Framework Maven Release Repository</name>
+            <url>http://repo.springsource.org/libs-milestone</url>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>repository.plugin.springsource.release</id>
+            <name>SpringSource Maven Repository</name>
+            <url>http://repo.springsource.org/plugins-release</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <profiles>
+
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+
+            <properties>
+                <profile.dir>dev</profile.dir>
+<!--                <dataSource.project.jdbcURL>jdbc:mysql://localhost/lrn</dataSource.project.jdbcURL>
+                <dataSource.project.user>lrn</dataSource.project.user>
+                <dataSource.project.password>lrn</dataSource.project.password>-->
+            </properties>
+        </profile>
+
+        <profile>
+            <id>prod</id>
+            <properties>
+                <profile.dir>prod</profile.dir>
+<!--                <dataSource.project.jdbcURL>jdbc:mysql://localhost/lrn</dataSource.project.jdbcURL>
+                <dataSource.project.user>lrn</dataSource.project.user>
+                <dataSource.project.password>lrn</dataSource.project.password>-->
+            </properties>
+        </profile>
+
+    </profiles>
 
     <dependencies>
+        <!-- Logging -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>log4j-over-slf4j</artifactId>
+            <version>1.7.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jul-to-slf4j</artifactId>
+            <version>1.7.6</version>
+        </dependency>
+
         <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty</artifactId>
             <version>3.8.0.Final</version>
-        </dependency>
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>1.2.16</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.data</groupId>
@@ -63,37 +133,6 @@
                     <target>1.7</target>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.16</version>
-                <configuration>
-                    <includes>
-                        <include>**/*.java</include>
-                    </includes>
-                </configuration>
-            </plugin>
-            <plugin>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>attached</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <descriptorRefs>
-                        <descriptorRef>jar-with-dependencies</descriptorRef>
-                    </descriptorRefs>
-                    <archive>
-                        <manifest>
-                            <mainClass>ua.pirateparty.games.tanks.server.TankServer</mainClass>
-                        </manifest>
-                    </archive>
-                </configuration>
-            </plugin>
         </plugins>
 
         <resources>
@@ -103,35 +142,5 @@
             </resource>
         </resources>
     </build>
-
-    <properties>
-        <keystore.filename>default_username</keystore.filename>
-        <keystore.password>default_password</keystore.password>
-    </properties>
-
-    <developers>
-        <developer>
-            <id>Kindrat</id>
-            <name>Oleksii Ignachuk</name>
-            <email>legioner@pp-ua.org</email>
-            <url>http://pp-ua.org</url>
-        </developer>
-    </developers>
-
-    <repositories>
-        <repository>
-            <id>spring-milestones</id>
-            <name>Spring Framework Maven Release Repository</name>
-            <url>http://repo.springsource.org/libs-milestone</url>
-        </repository>
-    </repositories>
-
-    <pluginRepositories>
-        <pluginRepository>
-            <id>repository.plugin.springsource.release</id>
-            <name>SpringSource Maven Repository</name>
-            <url>http://repo.springsource.org/plugins-release</url>
-        </pluginRepository>
-    </pluginRepositories>
 
 </project>
