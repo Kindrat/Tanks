@@ -18,15 +18,15 @@
 	<!-- Database -->
     <bean id="datasource" class="org.apache.tomcat.dbcp.dbcp2.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="org.postgresql.Driver" />
-        <property name="url" value="jdbc:postgresql://127.0.0.1:5432/programmer-wars-dev" />
-        <property name="username" value="postgres" />
-        <property name="password" value="postgres" />
+        <property name="url" value="${jdbc.url}" />
+        <property name="username" value="${jdbc.user}" />
+        <property name="password" value="${jdbc.pass}" />
     </bean>
 
 	<!-- Entity Manager -->
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-        <property name="dataSource" ref="dataSourceMysql" />
+        <property name="dataSource" ref="datasource" />
         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
         </property>
@@ -38,18 +38,22 @@
         <property name="packagesToScan" value="com" />
 	</bean>
 
+    <bean id="gameService" class="ua.pirateparty.games.tanks.server.services.GameService"/>
+
 	<!-- Transaction Manager -->
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
 
+<!--
     <bean id="applicationContextProvider" class="com.ApplicationContextProvider"/>
+-->
 
-    <context:component-scan base-package="com"/>
+    <context:component-scan base-package="ua.pirateparty.games.tanks.server"/>
     <tx:annotation-driven transaction-manager="transactionManager" />
 
 	<!-- Jpa Repositories -->
 	<jpa:repositories entity-manager-factory-ref="entityManagerFactory" transaction-manager-ref="transactionManager"
-                      base-package="com.repositories"/>
+                      base-package="ua.pirateparty.games.tanks.server.repositories"/>
 
 </beans>

@@ -1,20 +1,15 @@
 package ua.pirateparty.games.tanks.server.logic.evaluator;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import ua.pirateparty.games.tanks.server.entities.player.Player;
 
 import java.util.Map;
 
 import static ua.pirateparty.games.tanks.server.conf.Constants.direction.*;
-import static tanks.util.log.Loggers.globalLogger;
-
-/**
- * Created with IntelliJ IDEA.
- * User: legioner
- * Date: 17.09.12
- * Time: 1:14
- */
 
 public class Validator {
+   private static final Logger LOGGER = LoggerFactory.getLogger(Validator.class);
 
     public boolean validateMoves (Player player, Map<Integer, Object> activities){
 
@@ -69,7 +64,7 @@ public class Validator {
                     return null;
             }
         }catch (Exception e){
-            globalLogger.error(e);
+           LOGGER.error("!", e);
             return null;
         }
     }

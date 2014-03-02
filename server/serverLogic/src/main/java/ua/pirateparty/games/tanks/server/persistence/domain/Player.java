@@ -1,6 +1,6 @@
 package ua.pirateparty.games.tanks.server.persistence.domain;
 
-import ua.pirateparty.games.tanks.server.entities.player.State;
+import ua.pirateparty.games.tanks.common.PlayerState;
 
 import javax.persistence.*;
 
@@ -12,7 +12,7 @@ public class Player {
     @Column(name = "id")
     private long id;
     @Transient
-    private State state;
+    private PlayerState state;
     @Column(name = "first_name")
     private String firstName;
     @Column(name = "last_name")
@@ -30,11 +30,11 @@ public class Player {
         this.id = id;
     }
 
-    public State getState() {
+    public PlayerState getState() {
         return state;
     }
 
-    public void setState(State state) {
+    public void setState(PlayerState state) {
         this.state = state;
     }
 
