@@ -50,7 +50,7 @@
 
 	<!-- Jpa Repositories -->
 	<jpa:repositories entity-manager-factory-ref="entityManagerFactory" transaction-manager-ref="transactionManager"
-                      base-package="ua.pirateparty.games.tanks.server.persistence.repositories"/>
+                      base-package="ua.pirateparty.games.tanks.server.persistence.repository"/>
 
     <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
 

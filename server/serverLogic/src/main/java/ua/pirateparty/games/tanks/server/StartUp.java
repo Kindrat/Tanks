@@ -8,7 +8,7 @@ public class StartUp {
    public static void main(String[] args) throws InterruptedException {
       LogUtils.initLoggers();
       ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-      final TankServer server = (TankServer) context.getBean("tankServer", TankServer.class);
+      final TankServer server = context.getBean("tankServer", TankServer.class);
       server.start();
 
       Runtime.getRuntime().addShutdownHook(

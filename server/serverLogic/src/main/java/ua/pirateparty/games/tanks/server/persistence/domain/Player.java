@@ -4,7 +4,8 @@ import ua.pirateparty.games.tanks.common.PlayerState;
 
 import javax.persistence.*;
 
-@Entity(name = "player.profile")
+@Entity
+@Table(name = "player.profile")
 public class Player {
 
    @Id
