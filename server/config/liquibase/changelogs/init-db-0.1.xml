@@ -7,6 +7,49 @@
 
     <changeSet author="kindrat" id="1">
         <sql splitStatements="true">
+            DROP SEQUENCE IF EXISTS player.profile_id_seq CASCADE;
+            DROP INDEX IF EXISTS player.profile_login_idx;
+            DROP INDEX IF EXISTS player.profile_login_password_idx;
+            DROP TABLE IF EXISTS player.profile;
+            DROP SCHEMA IF EXISTS player;
+
+            CREATE SCHEMA player AUTHORIZATION postgres;
+
+            GRANT ALL ON SCHEMA player TO postgres;
+            COMMENT ON SCHEMA player IS 'Player related tables';
+
+            CREATE TABLE player.profile (
+                id BIGSERIAL NOT NULL,
+                first_name TEXT,
+                last_name TEXT,
+                nickname TEXT,
+                login TEXT NOT NULL,
+                password TEXT NOT NULL,
+                CONSTRAINT profile_pkey PRIMARY KEY (id),
+                CONSTRAINT profile_login_key UNIQUE (login)
+            )WITH (
+                OIDS=FALSE
+            );
+            ALTER TABLE player.profile OWNER TO postgres;
+
+            CREATE INDEX profile_login_idx
+                ON player.profile
+                USING hash
+                (login COLLATE pg_catalog."default");
+
+            CREATE INDEX profile_login_password_idx
+                ON player.profile
+                USING btree
+                (login COLLATE pg_catalog."default", password COLLATE pg_catalog."default");
         </sql>
+        <rollback>
+            <sql>
+                DROP SEQUENCE player.profile_id_seq;
+                DROP INDEX player.profile_login_idx;
+                DROP INDEX player.profile_login_password_idx;
+                DROP TABLE player.profile;
+                DROP SCHEMA player;
+            </sql>
+        </rollback>
     </changeSet>
 </databaseChangeLog>

@@ -3,40 +3,41 @@ package ua.pirateparty.games.tanks.server;
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import ua.pirateparty.games.tanks.common.util.LogUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
 import java.net.URI;
 import java.net.URISyntaxException;
 
+@Service("tankServer")
+public class TankServer {
 
-public class TankServer extends ResourceConfig {
+   private final Logger logger = LoggerFactory.getLogger(TankServer.class);
 
-    public static void main(String[] args) throws URISyntaxException, InterruptedException {
-       new ClassPathXmlApplicationContext("applicationContext.xml");
-       LogUtils.initLoggers();
+   @Value("${http.api.url}")
+   private String url;
 
-       final HttpServer httpServer = GrizzlyHttpServerFactory.createHttpServer(new URI("http://localhost:8080"), getConfig());
+   @Value("${http.services}")
+   private String packages;
 
-       // register shutdown hook
-       Runtime.getRuntime().addShutdownHook(
-               new Thread(new Runnable()
-               {
-                  @Override
-                  public void run()
-                  {
-                     httpServer.shutdownNow();
-                  }
-               }, "shutdownHook")
-       );
+   private HttpServer httpServer;
 
-       // prevent auto-exiting to OS
-       Thread.currentThread().join();
-    }
+   public void start() {
+      try{
+         httpServer = GrizzlyHttpServerFactory.createHttpServer(new URI(url), getConfig());
+      }catch (URISyntaxException e){
+         logger.error("TankServer.start :\tillegal http server uri - check config.properties ("+url+")");
+         System.exit(1);
+      }
+   }
 
-   private static ResourceConfig getConfig()
-   {
-      return new ResourceConfig()
-              .packages(true, "ua.pirateparty.games.tanks.server.services");
+   private ResourceConfig getConfig() {
+      return new ResourceConfig().packages(true, packages);
+   }
+
+   public HttpServer getHttpServer() {
+      return httpServer;
    }
 }

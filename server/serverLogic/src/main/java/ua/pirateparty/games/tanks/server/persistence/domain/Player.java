@@ -7,66 +7,83 @@ import javax.persistence.*;
 @Entity(name = "player.profile")
 public class Player {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    private long id;
-    @Transient
-    private PlayerState state;
-    @Column(name = "first_name")
-    private String firstName;
-    @Column(name = "last_name")
-    private String lastName;
-    @Column(name = "nickname")
-    private String nickname;
-    @Column(name = "password")
-    private String password;
+   @Id
+   @GeneratedValue(strategy = GenerationType.AUTO)
+   @Column(name = "id")
+   private long id;
+   @Transient
+   private PlayerState state;
+   @Column(name = "first_name")
+   private String firstName;
+   @Column(name = "last_name")
+   private String lastName;
+   @Column(name = "nickname")
+   private String nickname;
+   @Column(name= "login")
+   private String login;
+   @Column(name = "password")
+   private String password;
 
-    public long getId() {
-        return id;
-    }
+   public Player(){}
 
-    public void setId(long id) {
-        this.id = id;
-    }
+   public Player(String login, String password) {
+      this.login = login;
+      this.password = password;
+   }
 
-    public PlayerState getState() {
-        return state;
-    }
+   public long getId() {
+      return id;
+   }
 
-    public void setState(PlayerState state) {
-        this.state = state;
-    }
+   public void setId(long id) {
+      this.id = id;
+   }
 
-    public String getFirstName() {
-        return firstName;
-    }
+   public PlayerState getState() {
+      return state;
+   }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
+   public void setState(PlayerState state) {
+      this.state = state;
+   }
 
-    public String getLastName() {
-        return lastName;
-    }
+   public String getFirstName() {
+      return firstName;
+   }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
+   public void setFirstName(String firstName) {
+      this.firstName = firstName;
+   }
 
-    public String getNickname() {
-        return nickname;
-    }
+   public String getLastName() {
+      return lastName;
+   }
 
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
-    }
+   public void setLastName(String lastName) {
+      this.lastName = lastName;
+   }
 
-    public String getPassword() {
-        return password;
-    }
+   public String getNickname() {
+      return nickname;
+   }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+   public void setNickname(String nickname) {
+      this.nickname = nickname;
+   }
+
+   public String getLogin() {
+      return login;
+   }
+
+   public void setLogin(String login) {
+      this.login = login;
+   }
+
+   public String getPassword() {
+      return password;
+   }
+
+   public void setPassword(String password) {
+      this.password = password;
+   }
 }

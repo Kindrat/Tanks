@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
        xmlns:jpa="http://www.springframework.org/schema/data/jpa"
        xmlns:tx="http://www.springframework.org/schema/tx"
        xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.1.xsd
-		http://www.springframework.org/schema/beans
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
 		http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
 		http://www.springframework.org/schema/data/jpa
 		http://www.springframework.org/schema/data/jpa/spring-jpa-1.1.xsd
@@ -35,25 +33,27 @@
                 <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQL82Dialect</prop>
             </props>
         </property>
-        <property name="packagesToScan" value="com" />
+        <property name="packagesToScan" value="ua.pirateparty.games.tanks.server.persistence.domain" />
 	</bean>
-
-    <bean id="gameService" class="ua.pirateparty.games.tanks.server.services.GameService"/>
 
 	<!-- Transaction Manager -->
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
 
-<!--
-    <bean id="applicationContextProvider" class="com.ApplicationContextProvider"/>
--->
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="classpath:config.properties" />
+    </bean>
 
     <context:component-scan base-package="ua.pirateparty.games.tanks.server"/>
     <tx:annotation-driven transaction-manager="transactionManager" />
 
 	<!-- Jpa Repositories -->
 	<jpa:repositories entity-manager-factory-ref="entityManagerFactory" transaction-manager-ref="transactionManager"
-                      base-package="ua.pirateparty.games.tanks.server.repositories"/>
+                      base-package="ua.pirateparty.games.tanks.server.persistence.repositories"/>
+
+    <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
+
+    <bean id="tankServer" class="ua.pirateparty.games.tanks.server.TankServer" />
 
 </beans>
