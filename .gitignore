@@ -1,6 +1,5 @@
 # IDE files #
-client/
-
+.idea/
 *.class
 *.iml
 
