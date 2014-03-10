@@ -1,7 +1,6 @@
 package com.github.programmerwars.client;
 
 import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.RootPanel;
 
 /**
@@ -11,6 +10,6 @@ public class ProgrammerWarsClient implements EntryPoint {
 
    @Override
    public void onModuleLoad() {
-      RootPanel.get().add(new HTML("GWT App has loaded."));
+      RootPanel.get().add(new ClientLayout());
    }
 }
