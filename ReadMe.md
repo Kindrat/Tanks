@@ -1,10 +1,7 @@
-Programmer wars
+# Programmer wars
+#### Sandbox project to test different technologies and to implement one old idea of a zero-playing game.
 
-Project is written in Intellij Idea Community Edition and uses following dependences:
 
-— dom4j-1.6.1
-— flex-messaging-common
-— flex-messaging-core
-— joda-time-2.1
-— netty-3.5.7.Final
-— postgresql-9.1-902.jdbc4
+## Description
+Game mechanic would allow players to write their own AI algorithms for simple battle units (tanks). Each algorithm will
+ be made of pre-defined blocks and player won't be able to change any other parameters.

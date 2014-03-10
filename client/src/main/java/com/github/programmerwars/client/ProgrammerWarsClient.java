@@ -8,10 +8,9 @@ import com.google.gwt.user.client.ui.RootPanel;
  * Entry point classes define <code>onModuleLoad()</code>.
  */
 public class ProgrammerWarsClient implements EntryPoint {
-  
-  @Override
-  public void onModuleLoad() {
-    RootPanel.get().add(new HTML("GWT App has loaded."));
-  }
-  
+
+   @Override
+   public void onModuleLoad() {
+      RootPanel.get().add(new HTML("GWT App has loaded."));
+   }
 }
