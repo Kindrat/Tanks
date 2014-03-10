@@ -1,4 +1,4 @@
-Simple gameserver on java
+Programmer wars
 
 Project is written in Intellij Idea Community Edition and uses following dependences:
 
