@@ -5,12 +5,21 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.github.programmerwars</groupId>
-        <artifactId>tanks</artifactId>
+        <groupId>com.github.kindrat</groupId>
+        <artifactId>programmerwars</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>common</artifactId>
     <version>0.0.1</version>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns="http://www.springframework.org/schema/data/jpa"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/data/jpa
+    http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+
+    <repositories base-package="com.github.kindrat.programmerwars.tanks.server.persistence.repository" />
+
+    <beans:bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean">
+        <beans:property name="persistenceUnitName" value="tanksPostgresPU" />
+    </beans:bean>
+
+    <beans:bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <beans:property name="entityManagerFactory" ref="entityManagerFactory" />
+    </beans:bean>
+
+
+<!--
+    <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+-->
+
+<!--    <bean id="StudentProfileDAO" class="com.coe.jpa.StudentProfileDAO">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
+    </bean>-->
+
+<!--
+    <bean id="studentService" class="com.coe.api.StudentService" />
+-->
+</beans:beans>

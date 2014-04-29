@@ -11,7 +11,10 @@
             DROP INDEX IF EXISTS player.profile_login_idx;
             DROP INDEX IF EXISTS player.profile_login_password_idx;
             DROP TABLE IF EXISTS player.profile;
+            DROP TABLE IF EXISTS player.units;
             DROP SCHEMA IF EXISTS player;
+            DROP TABLE IF EXISTS static.rooms;
+            DROP SCHEMA IF EXISTS static;
 
             CREATE SCHEMA player AUTHORIZATION postgres;
 
@@ -41,6 +44,24 @@
                 ON player.profile
                 USING btree
                 (login COLLATE pg_catalog."default", password COLLATE pg_catalog."default");
+
+            CREATE TABLE player.units (
+                player_id BIGINT NOT NULL
+            )WITH (
+                OIDS=FALSE
+            );
+
+            CREATE SCHEMA static AUTHORIZATION postgres;
+
+            GRANT ALL ON SCHEMA static TO postgres;
+            COMMENT ON SCHEMA static IS 'Static data';
+
+            CREATE TABLE static.rooms (
+                id BIGSERIAL NOT NULL,
+                CONSTRAINT room_pkey PRIMARY KEY (id)
+            )WITH (
+                OIDS=FALSE
+            );
         </sql>
         <rollback>
             <sql>
@@ -48,7 +69,10 @@
                 DROP INDEX player.profile_login_idx;
                 DROP INDEX player.profile_login_password_idx;
                 DROP TABLE player.profile;
-                DROP SCHEMA player;
+                DROP TABLE IF EXISTS player.units;
+                DROP SCHEMA IF EXISTS player;
+                DROP TABLE IF EXISTS static.rooms;
+                DROP SCHEMA IF EXISTS static;
             </sql>
         </rollback>
     </changeSet>
