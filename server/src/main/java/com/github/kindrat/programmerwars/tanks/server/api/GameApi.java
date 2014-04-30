@@ -8,7 +8,8 @@ import javax.ws.rs.core.Response;
 
 @Service("gameService")
 @Path("game")
-public class GameService {
+public class GameApi
+{
 
    @POST
    @Path("action")

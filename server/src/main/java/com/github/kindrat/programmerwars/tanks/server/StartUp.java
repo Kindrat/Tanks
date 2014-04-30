@@ -22,6 +22,4 @@ public class StartUp {
 
       Thread.currentThread().join();
    }
-
-
 }

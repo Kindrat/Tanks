@@ -7,7 +7,8 @@ import javax.ws.rs.core.Response;
 
 @Service("unitService")
 @Path("unit")
-public class UnitService {
+public class UnitApi
+{
 
    @GET
    @Path("list")

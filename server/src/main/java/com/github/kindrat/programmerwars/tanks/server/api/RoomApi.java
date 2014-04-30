@@ -1,5 +1,7 @@
 package com.github.kindrat.programmerwars.tanks.server.api;
 
+import com.github.kindrat.programmerwars.tanks.server.services.RoomService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.ws.rs.GET;
@@ -10,7 +12,10 @@ import javax.ws.rs.core.Response;
 
 @Service("roomService")
 @Path("room")
-public class RoomService {
+public class RoomApi
+{
+   @Autowired
+   private RoomService roomService;
 
    @GET
    @Path("list")
