@@ -19,7 +19,7 @@ public class TankServer {
    @Value("${http.api.url}")
    private String url;
 
-   @Value("${http.api}")
+   @Value("${http.services}")
    private String packages;
 
    private HttpServer httpServer;
