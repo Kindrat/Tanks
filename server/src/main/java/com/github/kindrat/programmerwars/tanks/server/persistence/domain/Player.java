@@ -4,7 +4,7 @@ import com.github.kindrat.programmerwars.tanks.common.PlayerState;
 
 import javax.persistence.*;
 
-@Entity(name = "player")
+@Entity(name = "Player")
 @Table(name = "player.profile")
 public class Player {
 

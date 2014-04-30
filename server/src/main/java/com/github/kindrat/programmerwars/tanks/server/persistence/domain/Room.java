@@ -2,7 +2,7 @@ package com.github.kindrat.programmerwars.tanks.server.persistence.domain;
 
 import javax.persistence.*;
 
-@Entity(name = "room")
+@Entity(name = "Room")
 @Table(name = "static.rooms")
 public class Room {
 

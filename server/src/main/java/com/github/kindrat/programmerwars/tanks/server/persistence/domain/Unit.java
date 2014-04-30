@@ -2,7 +2,7 @@ package com.github.kindrat.programmerwars.tanks.server.persistence.domain;
 
 import javax.persistence.*;
 
-@Entity(name = "unit")
+@Entity(name = "Unit")
 @Table(name = "player.units")
 public class Unit {
    @Id
