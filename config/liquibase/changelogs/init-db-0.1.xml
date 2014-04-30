@@ -7,15 +7,6 @@
 
     <changeSet author="kindrat" id="1">
         <sql splitStatements="true">
-            DROP SEQUENCE IF EXISTS player.profile_id_seq CASCADE;
-            DROP INDEX IF EXISTS player.profile_login_idx;
-            DROP INDEX IF EXISTS player.profile_login_password_idx;
-            DROP TABLE IF EXISTS player.profile;
-            DROP TABLE IF EXISTS player.units;
-            DROP SCHEMA IF EXISTS player;
-            DROP TABLE IF EXISTS static.rooms;
-            DROP SCHEMA IF EXISTS static;
-
             CREATE SCHEMA player AUTHORIZATION postgres;
 
             GRANT ALL ON SCHEMA player TO postgres;
@@ -46,6 +37,7 @@
                 (login COLLATE pg_catalog."default", password COLLATE pg_catalog."default");
 
             CREATE TABLE player.units (
+                id BIGSERIAL NOT NULL,
                 player_id BIGINT NOT NULL
             )WITH (
                 OIDS=FALSE

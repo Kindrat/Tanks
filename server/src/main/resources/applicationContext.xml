@@ -54,6 +54,6 @@
 
     <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
 
-    <bean id="tankServer" class="com.github.kindrat.programmerwars.tanks.TankServer" />
+    <bean id="tankServer" class="com.github.kindrat.programmerwars.tanks.server.TankServer" />
 
 </beans>

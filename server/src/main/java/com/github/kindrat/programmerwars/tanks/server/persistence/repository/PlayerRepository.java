@@ -9,9 +9,9 @@ import com.github.kindrat.programmerwars.tanks.server.persistence.domain.Player;
 @Repository
 public interface PlayerRepository extends JpaRepository<Player, Long> {
 
-   @Query("select player from Player player where player.login = :login and player.password = :password")
+   @Query("select p from Player p where p.login = :login and p.password = :password")
    public Player findByCredentials(@Param("login") String login, @Param("password") String password);
 
-   @Query("select count(*) from Player player where player.login = :login")
+   @Query("select count(*) from Player p where p.login = :login")
    public int isLoginUnique(@Param("login") String login);
 }

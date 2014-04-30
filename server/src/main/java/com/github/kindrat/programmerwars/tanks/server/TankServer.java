@@ -6,12 +6,12 @@ import org.glassfish.jersey.server.ResourceConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.net.URI;
 import java.net.URISyntaxException;
 
-@Service("tankServer")
+@Component("tankServer")
 public class TankServer {
 
    private final Logger logger = LoggerFactory.getLogger(TankServer.class);
