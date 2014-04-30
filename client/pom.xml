@@ -20,7 +20,7 @@
         <!-- Maven -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
-        <gwtVersion>2.6.0</gwtVersion>
+        <gwtVersion>2.6.1-rc2</gwtVersion>
         <gwtPluginVersion>2.6.0</gwtPluginVersion>
     </properties>
 
