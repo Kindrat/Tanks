@@ -74,7 +74,12 @@ public class RestJavaConfigContextStarter extends ContextStarter {
 
     public void registerShutdownHook() {
         Runtime.getRuntime().addShutdownHook(
-                new Thread(this::close, "shutdownHook")
+                new Thread("shutdownHook") {
+                    @Override
+                    public void run() {
+                        close();
+                    }
+                }
         );
     }
 
