@@ -2,7 +2,7 @@ package com.github.kindrat.programmerwars.tanks.server.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.github.kindrat.programmerwars.tanks.server.persistence.domain.Player;
+import com.github.kindrat.programmerwars.tanks.server.persistence.entity.Player;
 import com.github.kindrat.programmerwars.tanks.server.persistence.repository.PlayerRepository;
 
 @Service("playerService")

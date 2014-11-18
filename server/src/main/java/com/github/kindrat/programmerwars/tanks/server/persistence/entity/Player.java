@@ -1,12 +1,14 @@
-package com.github.kindrat.programmerwars.tanks.server.persistence.domain;
+package com.github.kindrat.programmerwars.tanks.server.persistence.entity;
 
 import com.github.kindrat.programmerwars.tanks.common.PlayerState;
+import com.github.kindrat.programmerwars.tanks.common.dto.PlayerDto;
 
 import javax.persistence.*;
+import java.security.Principal;
 
-@Entity
-@Table(name = "player.profile")
-public class Player {
+@Entity(name = "Player")
+@Table(name = "profile", schema = "player")
+public class Player implements Principal, DtoConvertible<PlayerDto> {
 
    @Id
    @GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,6 +26,9 @@ public class Player {
    private String login;
    @Column(name = "password")
    private String password;
+   @ManyToOne(fetch = FetchType.EAGER)
+   @JoinColumn(name = "role")
+   private UserGroup userGroup;
 
    public Player(){}
 
@@ -86,5 +91,23 @@ public class Player {
 
    public void setPassword(String password) {
       this.password = password;
+   }
+
+   public UserGroup getUserGroup() {
+      return userGroup;
+   }
+
+   public void setUserGroup(UserGroup userGroup) {
+      this.userGroup = userGroup;
+   }
+
+   @Override
+   public String getName() {
+      return nickname;
+   }
+
+   @Override
+   public PlayerDto getAsApiDto() {
+      return null;
    }
 }

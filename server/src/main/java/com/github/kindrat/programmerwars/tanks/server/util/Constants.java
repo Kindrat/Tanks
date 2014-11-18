@@ -1,4 +1,4 @@
-package com.github.kindrat.programmerwars.tanks.server.conf;
+package com.github.kindrat.programmerwars.tanks.server.util;
 
 public class Constants {
 

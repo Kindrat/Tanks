@@ -1,4 +1,4 @@
-package com.github.kindrat.programmerwars.tanks.common.util.mail;
+package com.github.kindrat.programmerwars.tanks.common.util;
 
 /*
  * Copyright 2008 Les Hazlewood Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
@@ -27,7 +27,7 @@ public final class EmailValidator {
      * Private constructor; this is a utility class with static methods only, not designed for extension.
      */
     private EmailValidator() {
-        //
+        throw new AssertionError("Instantiating utility class");
     }
 
     /**

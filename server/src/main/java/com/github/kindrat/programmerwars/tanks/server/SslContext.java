@@ -13,7 +13,7 @@ import java.util.ResourceBundle;
 
 public class SslContext {
 
-   Logger logger = LoggerFactory.getLogger(SSLContext.class);
+   private static  final Logger LOGGER = LoggerFactory.getLogger(SSLContext.class);
 
    private static final String PROTOCOL = "TLS";
    private static final SslContext INSTANCE = new SslContext();
@@ -62,7 +62,7 @@ public class SslContext {
             throw new Error("SslContext. Failed to initialize the server-side SSLContext\t", e);
          }
       } catch (Exception ex) {
-         logger.error("SslContext. Ssl initialisation failed\t" + ex.getMessage());
+         LOGGER.error("SslContext. Ssl initialisation failed\t" + ex.getMessage());
          System.exit(1);
       } finally {
          _serverContext = serverContext;

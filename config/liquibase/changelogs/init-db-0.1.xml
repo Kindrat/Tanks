@@ -15,11 +15,22 @@
             DROP SCHEMA IF EXISTS player;
             DROP TABLE IF EXISTS static.rooms;
             DROP SCHEMA IF EXISTS static;
+            DROP TYPE IF EXISTS role;
+
+            CREATE TYPE role AS ENUM ('USER', 'ADMIN', 'NONE');
 
             CREATE SCHEMA player AUTHORIZATION postgres;
 
             GRANT ALL ON SCHEMA player TO postgres;
             COMMENT ON SCHEMA player IS 'Player related tables';
+
+            CREATE TABLE player.role (
+                id          INTEGER,
+                userRole    role,
+                PRIMARY KEY (id)
+            )WITH (
+                OIDS=FALSE
+            );
 
             CREATE TABLE player.profile (
                 id BIGSERIAL NOT NULL,
@@ -28,8 +39,10 @@
                 nickname TEXT,
                 login TEXT NOT NULL,
                 password TEXT NOT NULL,
+                role INTEGER NOT NULL,
                 CONSTRAINT profile_pkey PRIMARY KEY (id),
-                CONSTRAINT profile_login_key UNIQUE (login)
+                CONSTRAINT profile_login_key UNIQUE (login),
+                FOREIGN KEY (role) REFERENCES player.role (id) ON DELETE CASCADE ON UPDATE CASCADE
             )WITH (
                 OIDS=FALSE
             );
