@@ -59,6 +59,7 @@
                 (login COLLATE pg_catalog."default", password COLLATE pg_catalog."default");
 
             CREATE TABLE player.units (
+                id BIGSERIAL NOT NULL,
                 player_id BIGINT NOT NULL
             )WITH (
                 OIDS=FALSE
