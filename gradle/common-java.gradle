@@ -1,0 +1,61 @@
+apply plugin: 'java'
+apply plugin: 'jacoco'
+apply plugin: 'nebula.optional-base'
+apply plugin: 'com.github.ben-manes.versions'
+apply plugin: 'io.spring.dependency-management'
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.boot:spring-boot-starter-parent:$springBootVersion"
+    }
+    dependencies {
+        dependency("org.apache.commons:commons-lang3:3.5")
+        dependency("com.google.guava:guava:20.0")
+
+        // overrides
+        dependency("org.assertj:assertj-core:3.6.1")
+    }
+}
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+javadoc {
+    options.encoding = 'UTF-8'
+}
+
+dependencies {
+    compile("org.slf4j:slf4j-api")
+
+    // optional
+    compile("org.projectlombok:lombok:1.16.12", optional)
+    compile("com.google.code.findbugs:jsr305:3.0.1", optional)
+
+    compile("io.projectreactor:reactor-core:3.0.3.RELEASE")
+
+    testCompile("junit:junit")
+    testCompile("org.testng:testng:6.10")
+    testCompile("com.tngtech.java:junit-dataprovider:1.12.0")
+    testCompile("org.assertj:assertj-core")
+    testCompile("org.mockito:mockito-core")
+
+    testRuntime("ch.qos.logback:logback-classic")
+    testRuntime("org.codehaus.janino:janino")
+}
+
+tasks.withType(Test) {
+    testLogging {
+        exceptionFormat = 'full'
+        stackTraceFilters = []
+    }
+}
+
+gradle.projectsEvaluated {
+    tasks.withType(JavaCompile) {
+        options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+    }
+}
