@@ -14,7 +14,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Builder(toBuilder = true)
 @Entity(name = "UserGroup")
-@Table(name = "role", schema = "player")
+@Table(name = "role")
 public class UserGroup {
     @Id
     private Long id;

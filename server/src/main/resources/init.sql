@@ -1,5 +1,5 @@
 CREATE TABLE role (
-  id        INTEGER,
+  id        INTEGER NOT NULL AUTO_INCREMENT,
   user_role VARCHAR(20) CHECK user_role IN ('NONE', 'USER', 'ADMIN'),
   PRIMARY KEY (id)
 );
@@ -24,3 +24,8 @@ CREATE TABLE rooms (
   id BIGINT NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (id)
 );
+
+INSERT INTO role (user_role) VALUES ('NONE'), ('USER'), ('ADMIN');
+
+SET @roleId = (SELECT id FROM role WHERE user_role = 'ADMIN');
+INSERT INTO profile (name, nickname, login, password, role) VALUES ('Admin', 'Root', 'SystemUser', 'secret', @roleId);
