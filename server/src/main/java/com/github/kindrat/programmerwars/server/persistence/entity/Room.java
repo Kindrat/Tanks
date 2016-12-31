@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -18,4 +19,8 @@ import javax.persistence.Table;
 public class Room {
     @Id
     private Long id;
+    @Column(name = "name")
+    private String name;
+    @Column(name = "participants")
+    private Integer participants;
 }

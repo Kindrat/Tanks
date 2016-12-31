@@ -22,6 +22,8 @@ CREATE TABLE units (
 
 CREATE TABLE rooms (
   id BIGINT NOT NULL AUTO_INCREMENT,
+  name VARCHAR(50) NOT NULL,
+  participants INTEGER NOT NULL,
   PRIMARY KEY (id)
 );
 
@@ -29,3 +31,5 @@ INSERT INTO role (user_role) VALUES ('NONE'), ('USER'), ('ADMIN');
 
 SET @roleId = (SELECT id FROM role WHERE user_role = 'ADMIN');
 INSERT INTO profile (name, nickname, login, password, role) VALUES ('Admin', 'Root', 'SystemUser', 'secret', @roleId);
+
+INSERT INTO rooms (name, participants) VALUES ('test', 10);
